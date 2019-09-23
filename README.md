@@ -1,15 +1,16 @@
 # Yêu cầu hệ thống
 - Cài đặt composer
+- Cài đặt git
 - Cài đặt php, mysql, apache/nginx
 
 # Cài đặt
 - Khởi tạo git:
     Mở terminal ở folder bất kỳ. và chạy lệnh: 
-        - `git init`
-        - `git remote remote add origin https://<username>:<password>@github.com/trieuniemit/vocabulary-reminder.git`
-        - `git pull`
-        - `git pull origin master`
-        - `git branch --set-upstream-to=origin/master master`
+    - `git init`
+    - `git remote remote add origin https://<username>:<password>@github.com/trieuniemit/vocabulary-reminder.git`
+    - `git pull`
+    - `git pull origin master`
+    - `git branch --set-upstream-to=origin/master master`
         
 - Cài đặt các libs cần thiết cho laravel: 
     - `composer install`

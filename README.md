@@ -1,5 +1,6 @@
 # Yêu cầu hệ thống
 - Cài đặt composer
+- Cài đặt git
 - Cài đặt php, mysql, apache/nginx
 
 # Cài đặt

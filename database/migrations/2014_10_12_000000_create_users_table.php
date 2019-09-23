@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('avartar')->nullable();
             $table->integer('gender');
             $table->integer('role')->default(0);
-            $table->dateTime('birthday');
-            $table->string('desc');
+            $table->date('birthday');
+            $table->string('desc')->nullable();
             $table->integer('status');
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();

@@ -15,11 +15,11 @@ class CreateVocabulariesTable extends Migration
     {
         Schema::create('vocabularies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('type_id');
-            $table->integer('user_id');
             $table->string('word');
-            $table->string('spelling');
+            $table->integer('user_id');
             $table->integer('mean_id');
+            $table->string('spelling');
+            $table->integer('rate')->default(0);
             $table->integer('views')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();

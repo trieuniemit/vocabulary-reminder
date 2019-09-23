@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypesTable extends Migration
+class CreateRemindTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('reminds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('desc')->nullable();
+            $table->string('title');
             $table->integer('user_id');
+            $table->integer('times')->default(60*60*24); //1 day
+            $table->string('vocabs'); //
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('remind');
     }
 }

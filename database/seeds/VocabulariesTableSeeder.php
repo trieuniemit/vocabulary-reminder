@@ -11,27 +11,54 @@ class VocabulariesTableSeeder extends Seeder
      */
     public function run()
     {
-        $voca = "<C><F><I><N><Q>@abase /ə'beis/<br />*  ngoại động từ<br />- làm hạ phẩm giá, làm mất thể diện, làm nhục<br />=to abase one-self+ tự hạ mình</Q></N></I></F></C>";
+        $path = resource_path('json/edict.json');
+        $vocas = json_decode(file_get_contents($path));
+        foreach($vocas as $vc) {
+            $v = DB::table('vocabularies')->insertGetId([
+                'word' => $vc->word,
+                'user_id' => 1,
+                'spelling' => $vc->spelling
+            ]);
 
-        $voca = str_replace(array(
-                '<C><F><I><N><Q>',
-                '</Q></N></I></F></C>'
-            ), 
-            array('', ''), 
-            $voca
-        );
-
-        $vocaInfo = explode('<br />', $voca);
-
-        $vocaInfo[0] = preg_replace('/@.* \//', '', $vocaInfo[0]);
-        $vocaInfo[1] = preg_replace('/\*[ ]{1,}/', '', $vocaInfo[1]);
-        $vocaInfo[2] = preg_replace('/-[ ]{1,}/', '', $vocaInfo[2]);
-
-        foreach($vocaInfo as $v) {
+            $mean = DB::table('means')->insert([
+                'vocabulary_id' => $v,
+                'mean' => $vc->mean,
+                'type' => $vc->type
+            ]);
 
         }
+    }
 
-        print_r($vocaInfo);
+
+    public function exportJsonFromDb()
+    {
+        $data = DB::table('tbl_edict')->inRandomOrder()->limit(10000)->get();
+        $exportData = [];
+        foreach($data as $vc) {
+            $voca = str_replace(array(
+                    '<C><F><I><N><Q>',
+                    '</Q></N></I></F></C>'
+                ), 
+                array('', ''), 
+                $vc->detail
+            );
+
+            $vocaInfo = explode('<br />', $voca);
+
+            if(count($vocaInfo) >= 3) {
+                $exportData[] = [
+                    'word' => $vc->word,
+                    'spelling' => str_replace('/','', preg_replace('/@.* \//', '', $vocaInfo[0])),
+                    'type' => preg_replace('/\*[ ]{1,}/', '', $vocaInfo[1]),
+                    'mean' => preg_replace('/-[ ]{1,}/', '', $vocaInfo[2])
+                ];
+            }
+        }
+
+        $path = resource_path('json/edict.json');
+        $fp = fopen($path, 'w');
+        fwrite($fp, json_encode($exportData, JSON_PRETTY_PRINT));
+        fclose($fp);
 
     }
 }

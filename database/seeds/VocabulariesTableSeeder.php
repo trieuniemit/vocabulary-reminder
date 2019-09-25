@@ -14,17 +14,21 @@ class VocabulariesTableSeeder extends Seeder
         $path = resource_path('json/edict.json');
         $vocas = json_decode(file_get_contents($path));
         foreach($vocas as $vc) {
-            $v = DB::table('vocabularies')->insertGetId([
-                'word' => $vc->word,
-                'user_id' => 1,
-                'spelling' => $vc->spelling
-            ]);
+            try{
+                $v = DB::table('vocabularies')->insertGetId([
+                    'word' => $vc->word,
+                    'user_id' => 1,
+                    'spelling' => $vc->spelling
+                ]);
 
-            $mean = DB::table('means')->insert([
-                'vocabulary_id' => $v,
-                'mean' => $vc->mean,
-                'type' => $vc->type
-            ]);
+                $mean = DB::table('means')->insert([
+                    'vocabulary_id' => $v,
+                    'mean' => $vc->mean,
+                    'type' => $vc->type
+                ]);
+            }  catch (Exception $e) {
+                
+            }
 
         }
     }

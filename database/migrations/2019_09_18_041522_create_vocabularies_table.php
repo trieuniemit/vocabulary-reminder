@@ -17,7 +17,6 @@ class CreateVocabulariesTable extends Migration
             $table->bigIncrements('id');
             $table->string('word');
             $table->integer('user_id');
-            $table->integer('mean_id');
             $table->string('spelling');
             $table->integer('rate')->default(0);
             $table->integer('views')->default(0);

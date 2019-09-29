@@ -16,6 +16,7 @@ class CreateMeansTable extends Migration
         Schema::create('means', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('mean');
+            $table->integer('vocabulary_id');
             $table->string('type');
             $table->timestamps();
         });

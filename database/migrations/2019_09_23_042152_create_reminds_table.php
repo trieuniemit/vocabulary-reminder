@@ -17,6 +17,8 @@ class CreateRemindsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->integer('user_id');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('times')->default(60*60*24); //1 day
             $table->string('vocabs'); //
             $table->timestamps();

@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     function vocabulary(Request $request) {
         $vocas = null;
-        
+
         if(isset($request->type)) {
             $vocas = Vocabulary::whereHas('means', function ($query) use ($request){
                 $query->where('type', '=', $request->type);
@@ -31,4 +31,5 @@ class HomeController extends Controller
 
         return view('vocabulary', compact('vocas'));
     }
+
 }

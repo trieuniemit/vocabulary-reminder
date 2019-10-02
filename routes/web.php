@@ -21,7 +21,8 @@ Route::post('/signup', 'AuthController@postSignup')->name('signup_post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', 'UserController@getProfile')->name('profile'); //edit profile
-    Route::get('/logout', 'UserController@logout')->name('logout');
+    Route::get('/logout', 'AuthController@logout')->name('logout');
 });
 
-Route::get('/vocabulary', 'HomeController@vocabulary');
+Route::get('/vocabularies', 'HomeController@vocabulary')->name('vocabularies');
+Route::get('/vocabularies/{word}', 'HomeController@vocabularyDetail')->name('home_vocabulary_detail');

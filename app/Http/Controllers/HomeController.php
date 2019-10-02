@@ -18,17 +18,39 @@ class HomeController extends Controller
 
     function vocabulary(Request $request) {
         $vocas = null;
+        $urlArr = [];
         
-        if(isset($request->type)) {
+        if(isset($request->q)) {
+            //search
+            $vocas = Vocabulary::where('word', 'like', '%'.($request->q).'%')->orderBy('word');
+            
+            $urlArr = array(
+                'q' => $request->q
+            );
+        } else if(isset($request->type)) {
+            //with fillter
             $vocas = Vocabulary::whereHas('means', function ($query) use ($request){
                 $query->where('type', '=', $request->type);
-            })->paginate(48);
+            })->orderBy('word');
+            
+            $urlArr = array(
+                'type' => request()->type, 
+                'cat' => request()->cat
+            );
         } else {
-            $vocas = Vocabulary::paginate(48);
+            //no search, no filtter
+            $vocas = Vocabulary::orderBy('word');
         }
 
+        //paginate by 48 per page
+        $vocas = $vocas->paginate(48);
+        //load relationship
         $vocas->load('means');
 
-        return view('vocabulary', compact('vocas'));
+        return view('vocabulary', compact('vocas', 'urlArr'));
+    }
+
+    function vocabularyDetail($word) {
+        return view('');
     }
 }

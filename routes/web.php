@@ -26,4 +26,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/vocabularies', 'HomeController@vocabulary')->name('vocabularies');
+Route::get('/quick_search', 'HomeController@quickSearch')->name('quick_search');
 Route::get('/vocabularies/{word}', 'HomeController@vocabularyDetail')->name('home_vocabulary_detail');

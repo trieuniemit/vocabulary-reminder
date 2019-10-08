@@ -152,6 +152,29 @@
         //         $(this).parent().find('li[data-value="'+($(this).attr('data-val'))+'"]').addClass('selected focus');
         //     }, 300);
         // });
+
+        $('#quick_search input').keyup(function() {
+            if($(this).val().trim() != '') {
+                $.ajax({
+                    url: "/quick_search", 
+                    data: {
+                        q: $(this).val()
+                    },
+                    success: function(data){
+                        var html = '';
+                        data.forEach(function(item){
+                            html += `<li><a href="${item.link}">${item.word} <small>/${item.spelling}/</small> <span>- ${item.mean}</span></a>`;
+                        });
+
+                        $('.quick_search_result ul').html(html);
+
+                        $('.quick_search_result').show();
+                    }
+                });
+            } else {
+                $('.quick_search_result').hide();
+            }
+        });
 	}); 
 	
 	/*----------------------------------------------------*/

@@ -13,7 +13,37 @@ class HomeController extends Controller
     }
 
     function index() {
-        return view('home');
+        $vocas = Vocabulary::orderBy('created_at')->limit(48)->get();
+        //load relationship
+        $vocas->load('means');
+
+        return view('home', compact('vocas'));
+    }
+    
+    function quickSearch(Request $request) {
+        if(isset($request->q)) {
+            //search
+            $vocas = Vocabulary::where('word', 'like', ($request->q).'%')->orderBy('word');
+            
+            //paginate by 48 per page
+            $vocas = $vocas->limit(10)->get();
+
+            //load relationship
+            $vocas->load('means');
+
+            $returnArr = [];
+
+            foreach($vocas as $vo) {
+                $returnArr[] = [
+                    'word' => $vo->word,
+                    'mean' => count($vo->means) > 0?($vo->means[0]->mean): '',
+                    'type' => count($vo->means) > 0?($vo->means[0]->type): '',
+                    'link' => getVocaLink($vo->word)
+                ];
+            }
+
+            return response($returnArr);
+        }
     }
 
     function vocabulary(Request $request) {

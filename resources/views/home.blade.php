@@ -72,267 +72,41 @@
 		</div>
 	</section>
 	<!--================End Finance Area =================-->
-	
-	<!--================Courses Area =================-->
-	<section class="courses_area p_120">
-		<div class="container">
-			<div class="main_title">
-				<h2>Học cùng nhiều ngôn ngữ</h2>
-				<p>Chúng tôi cung cấp hệ thống học từ vựng với đa dạng ngôn ngữ</p>
+	<div class="container">
+		<div class="content">
+			<div class="row">
+				<div class="col-md-12" >
+					<form action="" id="quick_search" style="justify-content: center;" autocomplete="off">
+						<div class="form-group" style="margin: 0 5px;">
+							<input type="text" name="q" id="search" class="form-control" placeholder="Nhập từ cần tra..." autocomplete="off">
+						</div>
+						<button type="button" class="btn btn-success"><i class="fa fa-search"></i></button>
+					</form>
+					<div class="quick_search_result">
+						<ul></ul>
+					</div>
+				</div>
 			</div>
-			<div class="row courses_inner">
-				<div class="col-lg-9">
-					<div class="grid_inner">
-						<div class="grid_item wd55">
-							<div class="courses_item">
-								<img src="img/courses/course-1.jpg" alt="">
-								<div class="hover_text">
-									<a class="cat" href="#">Free</a>
-									<a href="#"><h4>Tiếng Đức</h4></a>
-									<ul class="list">
-										<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-										<li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-										<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-									</ul>
+			<div class="card-body" style="padding: 1.25rem 0;">
+				<div class="row" id="x">
+					<!-- item -->
+					@foreach ($vocas as $index => $voca)
+						<div class="col-md-2">
+							<div class="word_elm" style="{{ $index <= 42 ? 'border-bottom: 1px solid #ececec;':''}}">
+								<div class="card-desc">
+									<h3 style="text-transform: capitalize;"><a href="{{route('home_vocabulary_detail', ['word' => $voca->word])}}" style="color: #000;">{{$voca->word}}</a></h3>
+									<h6>/{{$voca->spelling}}/</h6>
+									<p><i style="color: blue;">[{{$voca->means[0]->type}}]</i></p>
+									<p>{{$voca->means[0]->mean}}</p>
 								</div>
 							</div>
 						</div>
-						<div class="grid_item wd44">
-							<div class="courses_item">
-								<img src="img/courses/course-2.jpg" alt="">
-								<div class="hover_text">
-									<a class="cat" href="#">Free</a>
-									<a href="#"><h4>Tiếng Anh</h4></a>
-									<ul class="list">
-										<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-										<li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-										<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="grid_item wd44">
-							<div class="courses_item">
-								<img src="img/courses/course-4.jpg" alt="">
-								<div class="hover_text">
-									<a class="cat" href="#">Free</a>
-									<a href="#"><h4>Tiếng Nhật</h4></a>
-									<ul class="list">
-										<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-										<li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-										<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="grid_item wd55">
-							<div class="courses_item">
-								<img src="img/courses/course-5.jpg" alt="">
-								<div class="hover_text">
-									<a class="cat" href="#">Free</a>
-									<a href="#"><h4>Tiếng Việt</h4></a>
-									<ul class="list">
-										<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-										<li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-										<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="course_item">
-						<img src="img/courses/course-3.jpg" alt="">
-						<div class="hover_text">
-							<a class="cat" href="#">Free</a>
-							<a href="#"><h4>Tiếng Lào</h4></a>
-							<ul class="list">
-								<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-								<li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-								<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-							</ul>
-						</div>
-					</div>
+					@endforeach
+					<!-- end item -->
 				</div>
 			</div>
 		</div>
-	</section>
-	<!--================End Courses Area =================-->
-	
-	<!--================Team Area =================-->
-	<section class="team_area p_120">
-		<div class="container">
-			<div class="main_title">
-				<h2>Với sự tham gia của nhiều thông dịch nổi tiếng</h2>
-				<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station.</p>
-			</div>
-			<div class="row team_inner">
-				<div class="col-lg-3 col-sm-6">
-					<div class="team_item">
-						<div class="team_img">
-							<img class="rounded-circle" src="img/team/team-1.jpg" alt="">
-							<div class="hover">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-							</div>
-						</div>
-						<div class="team_name">
-							<h4>Ethel Davis</h4>
-							<p>Managing Director (Sales)</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="team_item">
-						<div class="team_img">
-							<img class="rounded-circle" src="img/team/team-2.jpg" alt="">
-							<div class="hover">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-							</div>
-						</div>
-						<div class="team_name">
-							<h4>Ethel Davis</h4>
-							<p>Managing Director (Sales)</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="team_item">
-						<div class="team_img">
-							<img class="rounded-circle" src="img/team/team-3.jpg" alt="">
-							<div class="hover">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-							</div>
-						</div>
-						<div class="team_name">
-							<h4>Ethel Davis</h4>
-							<p>Managing Director (Sales)</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="team_item">
-						<div class="team_img">
-							<img class="rounded-circle" src="img/team/team-4.jpg" alt="">
-							<div class="hover">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-							</div>
-						</div>
-						<div class="team_name">
-							<h4>Ethel Davis</h4>
-							<p>Managing Director (Sales)</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Team Area =================-->
-	
-	<!--================Testimonials Area =================-->
-	<section class="testimonials_area p_120">
-		<div class="container">
-			<div class="testi_slider owl-carousel">
-				<div class="item">
-					<div class="testi_item">
-						<img src="img/testimonials/testi-3.png" alt="">
-						<h4>Fannie Rowe</h4>
-						<ul class="list">
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-						</ul>
-						<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="testi_item">
-						<img src="img/testimonials/testi-3.png" alt="">
-						<h4>Fannie Rowe</h4>
-						<ul class="list">
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-						</ul>
-						<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="testi_item">
-						<img src="img/testimonials/testi-3.png" alt="">
-						<h4>Fannie Rowe</h4>
-						<ul class="list">
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-						</ul>
-						<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Testimonials Area =================-->
-	
-	
-	<!--================Latest Blog Area =================-->
-	<section class="latest_blog_area p_120">
-		<div class="container">
-			<div class="main_title">
-				<h2>Latest Posts From Blog</h2>
-				<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station.</p>
-			</div>
-			<div class="row latest_blog_inner">
-				<div class="col-lg-3 col-md-6">
-					<div class="l_blog_item">
-						<img class="img-fluid" src="img/latest-blog/l-blog-1.jpg" alt="">
-						<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
-						<a href="single-blog.html"><h4>Addiction When Gambling Becomes A Problem</h4></a>
-						<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="l_blog_item">
-						<img class="img-fluid" src="img/latest-blog/l-blog-2.jpg" alt="">
-						<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
-						<a href="single-blog.html"><h4>Addiction When Gambling Becomes A Problem</h4></a>
-						<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="l_blog_item">
-						<img class="img-fluid" src="img/latest-blog/l-blog-3.jpg" alt="">
-						<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
-						<a href="single-blog.html"><h4>Addiction When Gambling Becomes A Problem</h4></a>
-						<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="l_blog_item">
-						<img class="img-fluid" src="img/latest-blog/l-blog-4.jpg" alt="">
-						<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
-						<a href="single-blog.html"><h4>Addiction When Gambling Becomes A Problem</h4></a>
-						<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Latest Blog Area =================-->
+	</div>
 	
 	<!--================Impress Area =================-->
 	<section class="impress_area p_120">

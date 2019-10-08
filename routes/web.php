@@ -20,7 +20,8 @@ Route::get('/signup', 'AuthController@getSignup')->name('signup');
 Route::post('/signup', 'AuthController@postSignup')->name('signup_post');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', 'UserController@getProfile')->name('profile'); //edit profile
+    Route::get('/profile', 'UserController@getUserProfile')->name('user_profile'); //edit profile
+    Route::post('/profile', 'UserController@postUserProfile')->name('user_profile'); //edit profile
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });
 

@@ -3288,3 +3288,16 @@ h6 {
   display: inline-block;
   width: 170px;
 }
+
+.mean_item {
+  margin-top: 20px;
+}
+
+.mean_item h4 {
+  color: blue;
+  font-style: italic;
+}
+
+.fb-comments iframe {
+  width: 100% !important
+}

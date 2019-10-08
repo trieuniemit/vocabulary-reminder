@@ -40,8 +40,8 @@
 					</div>
 					<div class="float-right">
 						@if (Auth::check())
-							<a class="dn_btn" href="{{route('profile')}}">{{Auth::user()->fullname}}</a>
-							<a class="dn_btn" href="{{route('profile')}}">{{Auth::user()->email}}</a>
+							<a class="dn_btn" href="{{route('user_profile')}}">{{Auth::user()->fullname}}</a>
+							<a class="dn_btn" href="{{route('user_profile')}}">{{Auth::user()->email}}</a>
 						@else
 							<a class="dn_btn" href="{{route('login')}}">Đăng nhập</a>
 							<a class="dn_btn" href="{{route('signup')}}">Đăng ký</a>
@@ -70,7 +70,7 @@
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
 										<ul class="dropdown-menu" style="left: -70px;">
-											<li class="nav-item"><a class="nav-link" href="{{route('profile')}}">Thông tin tài khoản</a>
+											<li class="nav-item"><a class="nav-link" href="{{route('user_profile')}}">Thông tin tài khoản</a>
 											<li class="nav-item"><a class="nav-link" href="{{route('logout')}}">Đăng xuất</a></li>
 										</ul>
 									</li> 

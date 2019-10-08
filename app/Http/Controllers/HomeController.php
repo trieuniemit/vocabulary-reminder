@@ -51,6 +51,8 @@ class HomeController extends Controller
     }
 
     function vocabularyDetail($word) {
-        return view('');
+        $voca = Vocabulary::where('word', $word)->first();
+        $voca->load('means');
+        return view('vocabulary_detail', compact('voca'));
     }
 }

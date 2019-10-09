@@ -1,8 +1,11 @@
 @extends('layouts.site_layout')
 
 @section('content')
-    <!--================start content =================-->
-    <div class="container">
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=156321928365097&autoLogAppEvents=1"></script>
+
+<div class="container">
         <div class="content">
             <div class="card">
                 <div class="card-header">
@@ -45,45 +48,21 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body" style="padding: 1.25rem 0;">
-                <div class="row" id="x">
-                    <!-- item -->
-                    @foreach ($vocas as $index => $voca)
-                        <div class="col-md-2">
-                            <div class="word_elm" style="{{ $index <= 42 ? 'border-bottom: 1px solid #ececec;':''}}">
-                                {{-- <div class="card-img">
-                                    <img src="https://placeimg.com/380/230/nature" alt="">
-                                    <span>
-                                        @if (count($voca->means) > 0)
-                                            <h4 style="text-transform: capitalize;">{{$voca->means[0]->type}}</h4>
-                                        @endif
-                                    </span>
-                                </div> --}}
-                                <div class="card-desc">
-                                    <h3 style="text-transform: capitalize;"><a href="{{route('home_vocabulary_detail', ['word' => $voca->word])}}" style="color: #000;">{{$voca->word}}</a></h3>
-                                    <h6>/{{$voca->spelling}}/</h6>
-                                    <p><i style="color: blue;">[{{$voca->means[0]->type}}]</i></p>
-                                    <p>{{$voca->means[0]->mean}}</p>
-                                    {{-- <div class="d-flex justify-content-center">
-                                        <a href="#" id="" class="btn btn-outline-primary btn-card" title="Thông tin chi tiết"><i
-                                                class="fa fa-info-circle"></i></a>
-                                        <a href="#" id="" class="btn btn-outline-success btn-card" title="Thêm vào nhắc nhở"><i
-                                                class="fa fa-book"></i></a>
-                                        <a href="#" id="" class="btn btn-outline-danger btn-card" title="Báo cáo vi phạm"><i
-                                                class="fa fa-exclamation"></i></a>
-                                    </div> --}}
-                                </div>
-                            </div>
+            <div class="w-full bg-white"
+                style="border-bottom: 1px solid rgba(0,0,0,0.12); margin-top: 50px">
+                <h1>{{$voca->word}} <span style="font-size: 20px;color: #007bff">/{{$voca->spelling}}/</span></h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach($voca->means as $mean)
+                        <div class="mean_item">
+                            <h4>[{{$mean->type}}]</h4>
+                            <p>{{$mean->mean}}</p>
                         </div>
                     @endforeach
-                    <!-- end item -->
+                    <div class="fb-comments" data-href="{{URL::current()}}" data-width="100%" data-numposts="5"></div>
                 </div>
-            </div>
-            <div class="w-full bg-white py-1 px-2 clearfix d-flex justify-content-end"
-                style="border-top: 1px solid rgba(0,0,0,0.12);">
-                {{ $vocas->appends($urlArr)->links() }}
             </div>
         </div>
     </div>
-    
 @endsection

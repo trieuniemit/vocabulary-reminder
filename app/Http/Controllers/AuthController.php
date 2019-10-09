@@ -18,13 +18,15 @@ class AuthController extends Controller
         $rules = [
     		'email' =>'required|email',
     		'password' => 'required|min:4'
-    	];
+		];
+		
     	$messages = [
     		'email.required' => 'Email là trường bắt buộc',
     		'email.email' => 'Email không đúng định dạng',
     		'password.required' => 'Mật khẩu là trường bắt buộc',
     		'password.min' => 'Mật khẩu phải chứa ít nhất 4 ký tự',
-    	];
+		];
+		
     	$validator = Validator::make($request->all(), $rules, $messages);
 
     	if ($validator->fails()) {
@@ -40,5 +42,14 @@ class AuthController extends Controller
     			return redirect()->back()->withInput()->withErrors($errors);
     		}
     	}
+	}
+
+	function getRegister() {
+		return view('register');
+	}
+	
+	function logout() {
+        auth()->logout();
+        return redirect('/');
     }
 }

@@ -42,8 +42,8 @@
 					</div>
 					<div class="float-right">
 						@if (Auth::check())
-							<a class="dn_btn" href="{{route('profile')}}">{{Auth::user()->fullname}}</a>
-							<a class="dn_btn" href="{{route('profile')}}">{{Auth::user()->email}}</a>
+							<a class="dn_btn" href="{{route('user_profile')}}">{{Auth::user()->fullname}}</a>
+							<a class="dn_btn" href="{{route('user_profile')}}">{{Auth::user()->email}}</a>
 						@else
 							<a class="dn_btn" href="{{route('login')}}">Đăng nhập</a>
 							<a class="dn_btn" href="{{route('signup')}}">Đăng ký</a>
@@ -64,15 +64,15 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li>
-								<li class="nav-item"><a class="nav-link" href="/vocabulary">Từ vựng</a></li>
-								<li class="nav-item"><a class="nav-link" href="/remind">Nhắc nhở</a></li>
-								<li class="nav-item"><a class="nav-link" href="/vocabularymanager">Quản lý từ vựng</a></li>
+								<li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li> 
+								<li class="nav-item"><a class="nav-link" href="{{route('vocabularies')}}">Từ vựng</a></li> 
+								<li class="nav-item"><a class="nav-link" href="/remind">Nhắc nhở</a></li> 
+								<li class="nav-item"><a class="nav-link" href="/voca-manager">Quản lý từ vựng</a></li> 
 								@if (Auth::check())
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
-										<ul class="dropdown-menu">
-											<li class="nav-item"><a class="nav-link" href="{{route('profile')}}">Thông tin tài khoản</a>
+										<ul class="dropdown-menu" style="left: -70px;">
+											<li class="nav-item"><a class="nav-link" href="{{route('user_profile')}}">Thông tin tài khoản</a>
 											<li class="nav-item"><a class="nav-link" href="{{route('logout')}}">Đăng xuất</a></li>
 										</ul>
 									</li>

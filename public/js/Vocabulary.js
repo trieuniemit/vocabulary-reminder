@@ -1,15 +1,36 @@
+(function ($) {
+    $.fn.serializeFormJSON = function () {
+
+        var o = {};
+        var a = this.serializeArray().filter(e => e.value !== '');
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+})(jQuery);
+
 $('#tblresult').DataTable({
     "processing": true,
     "serverSide": true,
     "dataType": 'json',
+    responsive: true,
     "ajax": {
-        "url": "/vocabulary/getall",
+        "url": "/vocabularymanager/getandfill",
         "type": "GET",
         "dataSrc": function(json){
             var index = 0;
             json.data.forEach(element => {
-                element.status = element.status == true ? "Hoạt động" : "Không hoạt đông";
-                element.Method = `<a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit"></i></a> &nbsp
+                element.type = element.mean == null ? "" : element.mean.type;
+                element.mean = element.mean == null ? "" : element.mean.mean;
+                element.Method = `<a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa fa-gear"></i></a> &nbsp
                                  <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a>`;
                 index++;
             });
@@ -23,15 +44,22 @@ $('#tblresult').DataTable({
         },
         {
             "className": "text-center",
+            "width": "2%",
             "orderable": false,
-            "targets": [0,6,7,9]
+            "targets": [0,6,7,8]
         },
-        // {
-        //     "targets": 5,
-        //     "render": function(data) {
-        //         return '<img src="'+ data + '" alt="IMG" style="width:200px">'
-        //     }
-        // }
+        {
+            "className": "text-center",
+            "width": "50px",
+            "orderable": false,
+            "targets": 9
+        },
+        {
+            "targets": 8,
+            "render": function(data) {
+                return data == 1 ? `<i class="fa fa-toggle-on" title="Hoạt động"></i>` : `<i class="fa fa-toggle-off" title="Không hoạt động"></i>`;
+            }
+        }
     ],
     columns: [
         { data: null },
@@ -64,7 +92,7 @@ $('#tblresult').DataTable({
 });
 
 $("#btnAdd").click(function () {
-    $("#idx").val('');
+    $("#idx").val(-1);
     $("#word").val('');
     $("#spelling").val('');
     $("#type").val('');
@@ -78,14 +106,108 @@ $("#tblresult").on("click", ".btnEdit", function () {
     // x('sss');
     //message().success("demo");
     var obj = $("#tblresult").DataTable().row($(this).parents('tr')).data();
+    console.log(obj.status);
     $("#idx").val(obj.id);
     $("#word").val(obj.word);
     $("#spelling").val(obj.spelling );
     $("#type").val(obj.type);
     $("#mean").val(obj.mean );
-    $("#status").val(obj.status == 'Hoạt động' ? '1' : '0');
+    $("#status").val(obj.status);
+    $("#status").niceSelect('update');
     $("#modalTitle").html('Sửa từ vựng');
     $("#appdetail").modal('show');
 });
 
+$("#tblresult").on("click", ".btnDelete", function () {
+    var obj = $('#tblresult').DataTable().row($(this).parents('tr')).data();
+    $("input[name='idx']").val(obj.id);
+    $('#appConfirm h4').html("Xóa dữ liệu");
+    let q = "Bạn có chắc chắn muốn từ <b>" + obj.word + "</b> không?";
+    $("#btnSubmitDetail").html("Xóa")
+    $('#appConfirm h5').html(q);
+    $("#appConfirm").modal('show');
+});
+
+$('#frmPost').submit((e) => {
+    e.preventDefault();
+    // e.preventDefault();
+    var id = $("#idx").val();
+    $("#btnSubmitDetail").attr("disabled", true);
+    var form = $('#frmPost').serializeFormJSON();
+    form.means = {
+        mean : form.mean,
+        type : form.type,
+        vocabulary_id : form.id,
+    };
+    delete form.mean;
+    delete form.type;
+    var formData = new FormData();
+        $.ajax({
+            url: "/vocabularymanager/edit/"+id,
+            method: "POST",
+            data: form,
+        })
+        .done((data) => {
+            if (data.code === 1) {
+                $('#tblresult').DataTable().ajax.reload();
+                $("#appdetail").modal('hide');
+                toastr.success("Cập nhập bản ghi thành công");
+            }
+            else {
+                toastr.error("có lỗi xảy ra vui long thử lại sau->" + data.error);
+            }
+        })
+        .fail(() => {
+            $("#appConfirm").modal('hide');
+            toastr.error("Xảy ra lỗi, vui lòng tải lại trang!");
+        });
+    $("#btnSubmitDetail").removeAttr("disabled");
+});
+
+toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "positionClass": "toast-bottom-right",
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "300000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
+
+$('#frmDelete').submit((e) => {
+    e.preventDefault();
+    $("#btnSubmitConfirm").attr("disabled", true);
+    let form = $('#frmDelete').serializeArray();
+    var id = $('#idx').val();
+    //var guid = $("#txtguid").val();
+    $.ajax({
+        url: "/vocabularymanager/delete/"+id,
+        method: "POST",
+        data: form,
+        dataType: 'json'
+    })
+    .done((data) => {
+        console.log(data);
+        if (data.code === 1) {
+            $('#tblresult').DataTable().ajax.reload();
+            $("#appConfirm").modal('hide');
+            toastr.success("Xóa bản ghi thành công");
+        }
+        else {
+            toastr.error("có lỗi xảy ra vui long thử lại sau->" + data.error);
+        }
+
+    })
+    .fail(() => {
+        $('#tblresult').DataTable().ajax.reload();
+        $("#appConfirm").modal('hide');
+        toastr.error("Xảy ra lỗi, vui lòng tải lại trang!");
+    });
+    $("#btnSubmitConfirm").removeAttr("disabled");
+});
 

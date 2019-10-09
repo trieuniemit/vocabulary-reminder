@@ -22,14 +22,15 @@
 
 
     <!--================start content =================-->
-    <div class="content">
-        <div class="card">
-            <div class="card-header">
-                <h5>Danh sách từ vựng</h5>
-            </div>
-            <div class="card-body">
-                <table id="tblresult" class="table table-striped table-bordered">
-                    <thead>
+    <div class="container">
+        <div class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Danh sách từ vựng</h5>
+                </div>
+                <div class="card-body">
+                    <table id="tblresult" class="table table-striped table-bordered">
+                        <thead>
                         <th>STT</th>
                         <th>id</th>
                         <th>Từ vựng</th>
@@ -40,19 +41,21 @@
                         <th>Đánh giá</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <div class="row">
-                    <div class="col-12">
-                        <button type="button" class="btn btn-primary" id="btnAdd" name="btnAdd"><i class="fa fa-plus"></i>&nbsp; Thêm</button>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary" id="btnAdd" name="btnAdd"><i class="fa fa-plus"></i>&nbsp; Thêm</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
+
     <div class="modal fade" id="appdetail" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" style="max-width: 1200px;">
             <div class="modal-content">
@@ -65,7 +68,8 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form method="post" class="form-horizontal" id="frmPost" enctype="multipart/form-data">
+                <form method="post" class="form-horizontal" id="frmPost">
+                    @csrf
                     <input type="hidden" id="idx" name="idx">
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="word" class=" form-control-label">Từ vựng</label></div>
@@ -94,8 +98,6 @@
                     </div>
                 </form>
             </div>
-
-
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
@@ -105,6 +107,41 @@
             </div>
         </div>
     </div>
+    <!-- The Modal appConfirm-->
+    <div class="modal fade" id="appConfirm">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5></h5>
+                    <form method="post" class="form-horizontal" id="frmDelete">
+                        @csrf
+                        <input type="hidden" id="idx" name="idx">
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-success" form="frmDelete" id="btnSubmitConfirm">Xóa</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--! The Modal appConfirm-->
+
     <!--================End content =================-->
 
+@endsection
+
+@section('script')
+    <script src="/js/Vocabulary.js"></script>
 @endsection

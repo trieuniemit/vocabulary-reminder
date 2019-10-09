@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/responsive.css">
         <link rel="stylesheet" type="text/css" href="/DataTables/css/dataTables.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
     </head>
     <body>
 
@@ -66,7 +67,7 @@
 								<li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li>
 								<li class="nav-item"><a class="nav-link" href="/vocabulary">Từ vựng</a></li>
 								<li class="nav-item"><a class="nav-link" href="/remind">Nhắc nhở</a></li>
-								<li class="nav-item"><a class="nav-link" href="/vocabulary-manager">Quản lý từ vựng</a></li>
+								<li class="nav-item"><a class="nav-link" href="/vocabularymanager">Quản lý từ vựng</a></li>
 								@if (Auth::check())
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
@@ -116,6 +117,7 @@
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/toastr.min.js"></script>
         <script src="/js/popper.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/stellar.js"></script>
@@ -132,7 +134,6 @@
         <script src="/js/theme.js"></script>
         <script type="text/javascript" src="/DataTables/js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>
-{{--        <script src="/js/VocabularyManager.js"></script>--}}
-    <script src="/js/Vocabulary.js"></script>
+        @yield('script')
     </body>
 </html>

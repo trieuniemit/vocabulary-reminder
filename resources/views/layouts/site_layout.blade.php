@@ -68,7 +68,7 @@
 								<li class="nav-item"><a class="nav-link" href="{{route('vocabularies')}}">Từ vựng</a></li> 
 								@if (Auth::check())
 									<li class="nav-item"><a class="nav-link" href="/remind">Nhắc nhở</a></li> 
-									<li class="nav-item"><a class="nav-link" href="/voca-manager">Quản lý từ vựng</a></li> 
+									<li class="nav-item"><a class="nav-link" href="{{route('vocabulary-manager')}}">Quản lý từ vựng</a></li> 
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
 										<ul class="dropdown-menu" style="left: -70px;">

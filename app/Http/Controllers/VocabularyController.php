@@ -17,9 +17,9 @@ class VocabularyController extends Controller
     //lấy dữ liệu đổ ra bảng
     public function getandfill(Request $request)
     {
-        $start = $request->get('start');
-        $limit = $request->get('length');
-        $vocabulary = array_values(Vocabulary::with('Mean')->orderBy("created_at",'DESC')
+        $start = $request->start;
+        $limit = $request->length;
+        $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at",'DESC')
         ->offset($start)->limit($limit)->get()->toArray());
         return response()->json(['data'=> $vocabulary,'recordsFiltered' => Vocabulary::count(), 'recordsTotal' => Vocabulary::count(), 'raws' => 1]);
     }

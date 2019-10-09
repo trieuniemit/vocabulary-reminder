@@ -20,6 +20,19 @@ Route::get('/signup', 'AuthController@getSignup')->name('signup');
 Route::post('/signup', 'AuthController@postSignup')->name('signup_post');
 
 Route::middleware('auth')->group(function () {
+
+    Route::prefix('vocabularymanager')->group(function() {
+        Route::get('/', function() {
+            return view('VocabularyManager');
+        })->name('vocabulary-manager');
+        Route::get('getandfill', 'VocabularyController@getandfill');
+        Route::post('edit/{id}', 'VocabularyController@edit');
+        Route::post('delete/{id}', 'VocabularyController@delete');
+    });
+
+
+    Route::get('/vocabulary', 'HomeController@vocabulary');
+
     Route::get('/profile', 'UserController@getUserProfile')->name('user_profile'); //edit profile
     Route::post('/profile', 'UserController@postUserProfile')->name('user_profile'); //edit profile
     Route::get('/logout', 'AuthController@logout')->name('logout');

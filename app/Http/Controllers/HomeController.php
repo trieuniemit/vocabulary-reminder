@@ -85,4 +85,5 @@ class HomeController extends Controller
         $voca->load('means');
         return view('vocabulary_detail', compact('voca'));
     }
+
 }

@@ -7,7 +7,7 @@
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>
             @if(isset($title))
-                {{$title}} - 
+                {{$title}} -
             @endif
             Vocabulary Remider
         </title>
@@ -23,9 +23,11 @@
         <!-- main css -->
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="/DataTables/css/dataTables.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
     </head>
     <body>
-        
+
         <!--================Header Menu Area =================-->
         <header class="header_area">
            	<div class="top_menu row m0">
@@ -47,8 +49,8 @@
 							<a class="dn_btn" href="{{route('signup')}}">Đăng ký</a>
 						@endif
 					</div>
-           		</div>	
-           	</div>	
+           		</div>
+           	</div>
             <div class="main_menu">
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container">
@@ -73,21 +75,21 @@
 											<li class="nav-item"><a class="nav-link" href="{{route('user_profile')}}">Thông tin tài khoản</a>
 											<li class="nav-item"><a class="nav-link" href="{{route('logout')}}">Đăng xuất</a></li>
 										</ul>
-									</li> 
+									</li>
 								@endif
 							</ul>
-						</div> 
+						</div>
 					</div>
             	</nav>
             </div>
         </header>
 		<!--================Header Menu Area =================-->
-		
+
 		<div class="content-section" style="min-height: calc(100vh - 212px)">
 			@yield('content')
 		</div>
 
-        <!--================ start footer Area  =================-->	
+        <!--================ start footer Area  =================-->
 		<footer class="footer-area">
 				<div class="container">
 					<div class="row footer-bottom d-flex justify-content-between align-items-center">
@@ -106,15 +108,16 @@
 				</div>
 			</footer>
 		<!--================ End footer Area  =================-->
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/toastr.min.js"></script>
         <script src="/js/popper.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/stellar.js"></script>
@@ -129,5 +132,8 @@
         <script src="/vendors/counter-up/jquery.counterup.js"></script>
         <script src="/js/mail-script.js"></script>
         <script src="/js/theme.js"></script>
+        <script type="text/javascript" src="/DataTables/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>
+        @yield('script')
     </body>
 </html>

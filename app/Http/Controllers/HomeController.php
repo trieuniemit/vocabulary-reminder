@@ -13,7 +13,7 @@ class HomeController extends Controller
     }
 
     function index() {
-        $vocas = Vocabulary::orderBy('created_at')->limit(48)->get();
+        $vocas = Vocabulary::orderBy('created_at')->limit(18)->get();
         //load relationship
         $vocas->load('means');
 
@@ -25,7 +25,7 @@ class HomeController extends Controller
             //search
             $vocas = Vocabulary::where('word', 'like', ($request->q).'%')->orderBy('word');
             
-            //paginate by 48 per page
+            //paginate by 10 per page
             $vocas = $vocas->limit(10)->get();
 
             //load relationship

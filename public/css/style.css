@@ -162,7 +162,7 @@ Table of Content:
 .content{
   min-width: 1200px;
   padding: 1%;
-  margin-top: 100px;
+  margin-top: 60px;
   margin-bottom: 50px;
 }
 
@@ -3350,4 +3350,12 @@ h6 {
 
 .quick_search_result span {
   color: #444;
+}
+
+h3.update_title {
+  color: #3F51B5;
+  font-weight: bold;
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 50px;
 }

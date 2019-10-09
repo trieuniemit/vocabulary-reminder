@@ -74,6 +74,7 @@
 	<!--================End Finance Area =================-->
 	<div class="container">
 		<div class="content">
+			<h3 class="update_title">TỪ MỚI CẬP NHẬT</h3>
 			<div class="row">
 				<div class="col-md-12" >
 					<form action="" id="quick_search" style="justify-content: center;" autocomplete="off">

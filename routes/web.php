@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', 'HomeController@index');
 //login
 Route::get('/login', 'AuthController@getLogin')->name('login');
@@ -31,10 +32,15 @@ Route::middleware('auth')->group(function () {
     });
 
     //feature for user
-    Route::prefix('user')->group(function() {
+    Route::group(['prefix' => 'user'], function() {
         Route::get('/remind', 'RemindController@getRemind')->name('user_remind');
         Route::get('/dictionary', 'User\HomeController@vocabularies')->name('user_dictionary');
+        Route::get('/dictionary/{word}', 'User\HomeController@vocabularyDetail')->name('user_vocabulary_detail');
         Route::get('/profile', 'User\HomeController@getUserProfile')->name('user_profile'); //edit profile
+    });
+
+    Route::prefix('admin')->group(function() {
+        Route::get('/', 'Admin\AdminController@index')->name('admin_home');
     });
 
     Route::get('/logout', 'AuthController@logout')->name('logout');

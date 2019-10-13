@@ -50,6 +50,14 @@ class HomeController extends Controller
         //load relationship
         $vocas->load('means');
 
-        return view('user.new_vocabularies', compact('vocas', 'urlArr', 'title'));
+        return view('user.dictionary', compact('vocas', 'urlArr', 'title'));
+    }
+
+    function vocabularyDetail($word) {
+        $title = 'Nghĩa của từ '.$word;
+
+        $voca = Vocabulary::where('word', $word)->first();
+        $voca->load('means');
+        return view('user.vocabulary_detail', compact('voca', 'title'));
     }
 }

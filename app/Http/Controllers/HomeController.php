@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     function index() {
         if(Auth::check()) {
-            return redirect(route('remind'));   
+            return redirect(route('admin_home'));   
         }
         $vocas = Vocabulary::orderBy('created_at')->limit(18)->get();
         //load relationship
@@ -81,12 +81,6 @@ class HomeController extends Controller
         $vocas->load('means');
 
         return view('vocabulary', compact('vocas', 'urlArr'));
-    }
-
-    function vocabularyDetail($word) {
-        $voca = Vocabulary::where('word', $word)->first();
-        $voca->load('means');
-        return view('vocabulary_detail', compact('voca'));
     }
 
 }

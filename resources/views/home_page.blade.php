@@ -4,7 +4,7 @@
 	<!--================Home Banner Area =================-->
 	<section class="home_banner_area">
 		<div class="banner_inner d-flex align-items-center">
-			<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+			<div class="overlay" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 			<div class="container">
 				<div class="banner_content text-center">
 					<h3>TƯƠNG LAI PHỤ THUỘC VÀO HÀNH ĐỘNG HÔM NAY</h3>
@@ -115,7 +115,6 @@
 			<div class="impress_inner text-center">
 				<h2>Become an instructor</h2>
 				<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station whether that is on the deck</p>
-				<a class="main_btn2" href="#">Apply for the post</a>
 			</div>
 		</div>
 	</section>

@@ -77,8 +77,61 @@
         </header>
 		<!--================Header Menu Area =================-->
 
-		<div class="content-section" style="min-height:calc(100vh - 140px)">
-			@yield('content')
+		<div class="content-section" style="min-height:calc(100vh - 140px);background:#f3f1f1;padding-top:50px;padding-bottom: 25px">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="menu_features">
+							<a href="{{route('user_remind')}}">
+								<div class="alert alert-primary big_icon" style="background-color: #dc3545" role="alert">
+									<i class="fa fa-bell" aria-hidden="true"></i>
+									<p>Nhắc nhở</p>
+								</div>
+							</a>
+							<a href="{{route('user_dictionary')}}">
+								<div class="alert alert-info big_icon" style="background-color: #28a745;" role="alert">
+									<i class="fa fa-book" aria-hidden="true"></i>
+									<p>Từ điển Online</p>
+								</div>
+							</a>
+							<a href="#">
+								<div class="alert alert-secondary big_icon" style="background-color: #007bff;" role="alert">
+									<i class="fa fa-th-list" aria-hidden="true"></i>
+									<p>Quản lý từ vựng</p>
+								</div>
+							</a>
+							<a href="#">
+								<div class="alert alert-success big_icon" style="background-color: #f88900" role="alert">
+									<i class="fa fa-suitcase" aria-hidden="true"></i>
+									<p>Ôn tập từ vựng</p>
+								</div>
+							</a>
+							<a href="{{route('user_profile')}}">
+								<div class="alert alert-danger big_icon" style="background-color: #17a2b8" role="alert">
+									<i class="fa fa-user" aria-hidden="true"></i>
+									<p>Thông tin cá nhân</p>
+								</div>
+							</a>
+							<a href="{{route('logout')}}">
+								<div class="alert alert-warning big_icon" style="background-color: #999999" role="alert">
+									<i class="fa fa-sign-out" aria-hidden="true"></i>
+									<p>Thoát</p>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<div class="card border-secondary mb-3">
+							<div class="card-header bg-secondary">
+								<h2>{{isset($title)? $title: 'Hệ thống nhắc nhở học từ vựng'}}</h2>
+							</div>
+							<div class="card-body">
+								@yield('content')
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
         <!--================ start footer Area  =================-->

@@ -1,12 +1,9 @@
-@extends('layouts.site_layout')
+@extends('layouts.user_layout')
 
 @section('content')
 <div class="login_wrap p_120" style="padding-top: 80px">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1>Thông tin cá nhân</h1>
-            </div>
             <div class="col-md-12">
                 <form action="{{route('user_profile')}}" class="login_form" method="post">
                     @csrf

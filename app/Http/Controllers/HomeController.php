@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Vocabulary;
 
 class HomeController extends Controller
@@ -13,11 +14,13 @@ class HomeController extends Controller
     }
 
     function index() {
+        if(Auth::check()) {
+            return redirect(route('remind'));   
+        }
         $vocas = Vocabulary::orderBy('created_at')->limit(18)->get();
         //load relationship
         $vocas->load('means');
-
-        return view('home', compact('vocas'));
+        return view('home_page', compact('vocas'));
     }
     
     function quickSearch(Request $request) {

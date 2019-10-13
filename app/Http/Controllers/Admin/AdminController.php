@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class AdminController extends Controller
 {
     function index() {
-        return view('admin.home_page');
+        $users = User::all();
+        return view('admin.users_manager', compact('users'));
     }
 }

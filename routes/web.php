@@ -40,7 +40,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix('admin')->group(function() {
-        Route::get('/', 'Admin\AdminController@index')->name('admin_home');
+        Route::get('/', 'Admin\UserController@index')->name('admin_home');
+        Route::resource('/users', 'Admin\UserController');
     });
 
     Route::get('/logout', 'AuthController@logout')->name('logout');

@@ -22,3 +22,7 @@ function getVocaTypes() {
 function isAdmin() {
     return Auth::user()->role == 1;
 }
+
+function isManger() {
+    return Auth::user()->role >=2;
+}

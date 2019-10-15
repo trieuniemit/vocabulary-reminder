@@ -44,6 +44,10 @@ Table of Content:
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Roboto:300,400,500,700");
 /*---------------------------------------------------- */
 
+* {
+  margin: 0;
+  padding: 0;
+}
 
 /* equal card height */
 .row-equal > div[class*='col-'] {
@@ -335,7 +339,7 @@ button:focus {
       .header_area .navbar .search i {
         font-weight: 600; }
   .header_area + section, .header_area + row, .header_area + div {
-    margin-top: 122px; }
+    margin-top: 70px; }
   .header_area.navbar_fixed .main_menu {
     position: fixed;
     width: 100%;
@@ -3358,4 +3362,79 @@ h3.update_title {
   font-size: 35px;
   text-align: center;
   margin-bottom: 50px;
+}
+
+img.user_avatar {
+  width: 35px;
+  border-radius: 50px;
+}
+
+.user_info {
+  float: right;
+  margin-top: 20px;
+  margin-left: 10px;
+  line-height: 16px;
+}
+
+.user_info span{
+  display: block;
+}
+
+.user_info .email {
+  font-size: 10px;
+  text-transform: lowercase;
+}
+
+#navbarSupportedContent .bell {
+  font-size: 24px;
+  position: relative;
+}
+
+#navbarSupportedContent .bell_count {
+  display: block;
+  min-width: 16px;
+  text-align: center;
+  top: -3px;
+  color: #fff;
+  border-radius: 30px;
+  background: red;
+  line-height: 17px;
+  font-size: 12px;
+  right: -6px;
+  height: 16px;
+  position: absolute;
+}
+
+.menu_features {
+  /* background: #fff; */
+}
+
+.big_icon {
+  color: #fff;
+  padding: 13px;
+  text-align: center;
+}
+
+.big_icon i {
+  font-size: 43px;
+}
+
+.big_icon p {
+  font-size: 20px;
+}
+
+.content-section h2 {
+  color: #fff;
+  font-family: arial
+}
+
+.word_elm {
+  border-right: 1px solid #ccc;
+  display: inline-block;
+  padding-right: 15px;
+  margin: 5px 10px 7px 5px;
+}
+
+.word_elm:last-child {
+  border-right: none;
 }

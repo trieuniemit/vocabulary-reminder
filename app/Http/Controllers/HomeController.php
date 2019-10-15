@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Vocabulary;
 
 class HomeController extends Controller
@@ -13,11 +14,13 @@ class HomeController extends Controller
     }
 
     function index() {
+        if(Auth::check()) {
+            return redirect(route('admin_home'));   
+        }
         $vocas = Vocabulary::orderBy('created_at')->limit(18)->get();
         //load relationship
         $vocas->load('means');
-
-        return view('home', compact('vocas'));
+        return view('home_page', compact('vocas'));
     }
     
     function quickSearch(Request $request) {
@@ -78,12 +81,6 @@ class HomeController extends Controller
         $vocas->load('means');
 
         return view('vocabulary', compact('vocas', 'urlArr'));
-    }
-
-    function vocabularyDetail($word) {
-        $voca = Vocabulary::where('word', $word)->first();
-        $voca->load('means');
-        return view('vocabulary_detail', compact('voca'));
     }
 
 }

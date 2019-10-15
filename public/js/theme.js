@@ -2,25 +2,25 @@
     "use strict"
 	
 	
-	var nav_offset_top = $('header').height() + 50; 
+	//var nav_offset_top = $('header').height() + 50; 
     /*-------------------------------------------------------------------------------
 	  Navbar 
 	-------------------------------------------------------------------------------*/
 
 	//* Navbar Fixed  
-    function navbarFixed(){
-        if ( $('.header_area').length ){ 
-            $(window).scroll(function() {
-                var scroll = $(window).scrollTop();   
-                if (scroll >= nav_offset_top ) {
-                    $(".header_area").addClass("navbar_fixed");
-                } else {
-                    $(".header_area").removeClass("navbar_fixed");
-                }
-            });
-        };
-    };
-    navbarFixed();
+    // function navbarFixed(){
+    //     if ( $('.header_area').length ){ 
+    //         $(window).scroll(function() {
+    //             var scroll = $(window).scrollTop();   
+    //             if (scroll >= nav_offset_top ) {
+    //                 $(".header_area").addClass("navbar_fixed");
+    //             } else {
+    //                 $(".header_area").removeClass("navbar_fixed");
+    //             }
+    //         });
+    //     };
+    // };
+    // navbarFixed();
 	
 	
 	/*----------------------------------------------------*/
@@ -175,6 +175,8 @@
                 $('.quick_search_result').hide();
             }
         });
+
+        $('.show_tooltip').tooltip({ boundary: 'window' })
 	}); 
 	
 	/*----------------------------------------------------*/

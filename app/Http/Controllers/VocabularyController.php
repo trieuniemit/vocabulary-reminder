@@ -19,15 +19,16 @@ class VocabularyController extends Controller
     {
         $start = $request->start;
         $limit = $request->length;
-        if (Auth::user()->role == 2){
-            $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at",'DESC')->where("id",Auth::id())
-                ->offset($start)->limit($limit)->get()->toArray());
-        }
-        else
-        {
+//        if (Auth::user()->role == 2){
+//            $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at",'DESC')->where("id",Auth::id())
+//                ->offset($start)->limit($limit)->get()->toArray());
+//        }
+//        else
+//        {
+        dd(Auth::user()->role);
             $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at",'DESC')
                 ->offset($start)->limit($limit)->get()->toArray());
-        }
+//        }
         return response()->json(['data'=> $vocabulary,'recordsFiltered' => Vocabulary::count(), 'recordsTotal' => Vocabulary::count(), 'raws' => 1]);
     }
 

@@ -60,7 +60,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'Cập nhật thông tin người dùng';
+
+        $user = User::findOrFail($id);
+        return view('admin.users_manager_create_edit', compact('user'));
     }
 
     /**

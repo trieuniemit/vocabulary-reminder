@@ -18,6 +18,7 @@
                     <th>Giới tính</th>
                     <th>Ngày sinh</th>
                     <th>Trạng thái</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
@@ -28,6 +29,7 @@
                     <th>Giới tính</th>
                     <th>Ngày sinh</th>
                     <th>Trạng thái</th>
+                    <th>Actions</th>
                 </tr>
             </tfoot>
             <tbody>
@@ -39,6 +41,14 @@
                         <td>{{$user->gender==1?'Nữ': 'Nam'}}</td>
                         <td>{{$user->birthday}}</td>
                         <td>{!! $user->status==0?'<span style="color:green">Ngừng hoạt động</span>': '<span style="color:green">Hoạt động</span>' !!}</td>
+                        <td style="text-align: center">
+                            <a href="{{route('users.index')}}/{{$user->id}}/edit" style="color:green"><i class="fas fa-edit" aria-hidden="true"></i></a> | 
+                            <form style="display: inline" action="{{route('users.index')}}/{{$user->id}}" method="post">
+                                <button type="submit" style="color: red;padding: 0;border-width: 0px;background: none;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                {{ method_field('DELETE') }}
+                                {!! csrf_field() !!}
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

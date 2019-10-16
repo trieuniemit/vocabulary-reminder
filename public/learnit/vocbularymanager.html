@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <title>Learn IT Education</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="vendors/linericon/style.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+    <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="vendors/animate-css/animate.css">
+    <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/w/dt/dt-1.10.18/datatables.min.css" />
+
+</head>
+
+<body>
+
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+        <div class="top_menu row m0">
+            <div class="container">
+                <div class="float-left">
+                    <ul class="list header_social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                    </ul>
+                </div>
+                <div class="float-right">
+                    <a class="dn_btn" href="tel:+4400123654896">+440 012 3654 896</a>
+                    <a class="dn_btn" href="mailto:support@colorlib.com">support@colorlib.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="vocabulary.html">Từ vựng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="remind.html">Nhắc nhở</a></li>
+                            <li class="nav-item"><a class="nav-link" href="vocbularymanager.html">Quản lý từ vựng</a>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">Tài khoản</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="courses.html">Thông tin tài khoản</a>
+                                    <li class="nav-item"><a class="nav-link" href="courses.html">Đăng nhập</a>
+                                    <li class="nav-item"><a class="nav-link" href="course-details.html">Đăng xuất</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="course-details.html">Đăng Ký</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--================Header Menu Area =================-->
+
+    <!--================Home Banner Area =================-->
+    <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+                <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
+                    data-background=""></div>
+                <div class="container">
+                    <div class="banner_content text-center">
+                        <h2>Quản lý từ vựng</h2>
+                        <div class="page_link">
+                            <a href="index.html">Trang chủ</a>
+                            <a href="blog.html">quản lý Từ vựng</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!--================End Home Banner Area =================-->
+
+
+    <!--================start content =================-->
+    <div class="content">
+        <div class="card">
+            <div class="card-header">
+                <h5>Danh sách từ vựng</h5>
+            </div>
+            <div class="card-body">
+                <table id="result" class="table table-striped table-bordered">
+                    <thead>
+                        <th>STT</th>
+                        <th>Từ vựng</th>
+                        <th>Loại từ</th>
+                        <th>Phiên âm</th>
+                        <th>Nghĩa</th>
+                        <th>Ảnh minh họa</th>
+                        <th>Thao tác</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Flower</td>
+                            <td>Danh từ</td>
+                            <td>/'flauə/</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td><a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit"></i></a> &nbsp
+                                <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Flower</td>
+                            <td>Danh từ</td>
+                            <td>/'flauə/</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td><a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit"></i></a> &nbsp
+                                <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Flower</td>
+                            <td>Danh từ</td>
+                            <td>/'flauə/</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td><a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit"></i></a> &nbsp
+                                <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Flower</td>
+                            <td>Danh từ</td>
+                            <td>/'flauə/</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td><a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit"></i></a> &nbsp
+                                <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Flower</td>
+                            <td>Danh từ</td>
+                            <td>/'flauə/</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td>Hoa, bông hoa, đoá hoa</td>
+                            <td><a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit"></i></a> &nbsp
+                                <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary" id="btnAdd" name="btnAdd"><i class="fa fa-plus"></i>&nbsp; Thêm</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="modal fade" id="appdetail" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" style="max-width: 1200px;">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="post" class="form-horizontal" id="frmPost" enctype="multipart/form-data">
+                    <input type="hidden" id="idxx" name="idxx">
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="NAME_LoaiTaiKhoan" class=" form-control-label">Từ vựng</label></div>
+                        <div class="col-12 col-md-9"><input type="text" id="TITLE_TinTuc" name="TITLE_TinTuc" class="form-control"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="NAME_LoaiTaiKhoan" class=" form-control-label">Loại từ vựng</label></div>
+                        <div class="col-12 col-md-9"><input type="text" id="TITLE_TinTuc" name="TITLE_TinTuc" class="form-control"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="NAME_LoaiTaiKhoan" class=" form-control-label">Phiên âm</label></div>
+                        <div class="col-12 col-md-9"><input type="text" id="TITLE_TinTuc" name="TITLE_TinTuc" class="form-control"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="NAME_LoaiTaiKhoan" class=" form-control-label">Nghĩa</label></div>
+                        <div class="col-12 col-md-9"><input type="text" id="TITLE_TinTuc" name="TITLE_TinTuc" class="form-control"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="NAME_LoaiTaiKhoan" class=" form-control-label">link ảnh</label></div>
+                        <div class="col-12 col-md-9"><input type="text" id="TITLE_TinTuc" name="TITLE_TinTuc" class="form-control"></div>
+                    </div>
+                    <div class="row form-group">
+                            <div class="col col-md-3"><label for="STATUS_TinTuc" class=" form-control-label">Trạng thái</label></div>
+                            <div class="col-12 col-md-9">
+                            <select name="STATUS_TinTuc" id="STATUS_TinTuc" class="form-control">
+                                    <option value="0">Không hoạt động</option>
+                                    <option value="1">Hoạt động</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                            <div class="col col-md-3"><label for="CreatedDate_TinTuc" class=" form-control-label">Ngày tạo</label></div>
+                            <div class="col-12 col-md-9"><input name="CreatedDate_TinTuc" id="CreatedDate_TinTuc" class="form-control"/></div>
+                    </div>
+                </form>
+            </div>
+            
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-success" form="frmPost" id="btnSubmitDetail">Cập nhật</button>
+                <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Reset</button> 
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--================End content =================-->
+
+
+    <!--================ start footer Area  =================-->
+    <footer class="footer-area p_120">
+            <div class="container">
+                <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                    <p class="col-lg-8 col-md-8 footer-text m-0">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is
+                        made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                    <div class="col-lg-4 col-md-4 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <!--================ End footer Area  =================-->
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/w/dt/dt-1.10.18/datatables.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/stellar.js"></script>
+    <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+    <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="vendors/isotope/isotope.pkgd.min.js"></script>
+    <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="vendors/popup/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendors/counter-up/jquery.counterup.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            var table = $("result").dataTable({
+                "ajax": {
+                    "url": "C:\\Users\\phamh\\OneDrive\\Desktop\\learnit\\data.json",
+                    "type": "GET",
+                    //"cache":false,
+                    "dataSrc": function (json) {
+                        var index = 0;
+                        console.log(json);
+                        json.forEach(element => {
+                            element.STATUS_TinTuc = element.STATUS_TinTuc == true ? "Hoạt động" : "Không hoạt đông";
+                            element.Method = `<a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit"></i></a> &nbsp
+                                <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a>`;
+                            element.CreatedDate_TinTuc = new Date(element.CreatedDate_TinTuc).toDateString();
+                            index++;
+                        });
+                        return json;
+                    },
+                    "success":function(json){
+                console.log("aaaa");
+                        console.log("success: " +json);
+                    },
+                    // complete: () => {
+                    //     //GAT_widgetMix();
+                    // }
+                },
+            })
+            $("#btnAdd").click(function () {
+            $("#appdetail").modal('show');
+        });
+        $("#result").on("click", ".btnEdit", function () {
+        $("#appdetail").modal('show');
+        });
+        })
+    </script>
+</body>
+
+</html>

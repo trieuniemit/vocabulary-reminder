@@ -3438,3 +3438,18 @@ img.user_avatar {
 .word_elm:last-child {
   border-right: none;
 }
+
+
+.success{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    background: #1af11a;
+    top: 0;
+    right: 0;
+    display:none;
+}
+.card-img{
+  position: relative;
+}

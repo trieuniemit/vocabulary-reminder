@@ -25,6 +25,10 @@ Route::middleware('auth')->group(function () {
 
     //feature for user
     Route::group(['prefix' => 'user'], function() {
+        Route::get('/', function() {
+            return redirect(route('user_remind'));
+        });
+
         //hoang thuc
         Route::get('/remind', 'User\RemindController@index')->name('user_remind');
         Route::post('/remind', 'User\RemindController@create')->name('remind_post');

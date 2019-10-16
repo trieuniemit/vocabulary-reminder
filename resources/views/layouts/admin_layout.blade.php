@@ -21,6 +21,7 @@
 
     <!-- Page level plugin CSS-->
     <link href="/admin_resource/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/DataTables/css/responsive.dataTables.min.css"/>
 
     <!-- Custom styles for this template-->
     <link href="/admin_resource/css/sb-admin.css" rel="stylesheet">
@@ -146,6 +147,7 @@
 <script src="/admin_resource/js/demo/datatables-demo.js"></script>
 <script src="/js/toastr.min.js"></script>
 <script src="/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+<script type="text/javascript" src="/DataTables/js/dataTables.responsive.js"></script>
 
 @yield('script')
 </body>

@@ -17,11 +17,11 @@
     };
 })(jQuery);
 
-$('#tblresult').DataTable({
+var table = $('#tblresult').DataTable({
+    responsive: true,
     "processing": true,
     "serverSide": true,
     "dataType": 'json',
-    responsive: true,
     "ajax": {
         "url": "/admin/vocabularymanager/getandfill",
         "type": "GET",
@@ -55,6 +55,7 @@ $('#tblresult').DataTable({
             "orderable": false,
             "targets": 9
         },
+        // { "responsivePriority": 2, "targets": 2 },
         {
             "targets": 8,
             "render": function(data) {
@@ -91,7 +92,11 @@ $('#tblresult').DataTable({
         }
     },
 });
-
+$.fn.dataTable.Responsive.breakpoints = [
+    { name: 'spelling', width: Infinity },
+    { name: 'mean',  width: 1024 },
+    { name: 'views',  width: 768 }
+];
 $("#btnAdd").click(function () {
     $("#idx").val(-1);
     $("#word").val('');
@@ -107,7 +112,6 @@ $("#tblresult").on("click", ".btnEdit", function () {
     // x('sss');
     //message().success("demo");
     var obj = $("#tblresult").DataTable().row($(this).parents('tr')).data();
-    console.log(obj.status);
     $("#idx").val(obj.id);
     $("#word").val(obj.word);
     $("#spelling").val(obj.spelling );
@@ -165,7 +169,6 @@ $('#frmPost').submit((e) => {
         });
     $("#btnSubmitDetail").removeAttr("disabled");
 });
-
 toastr.options = {
     "closeButton": true,
     "debug": false,

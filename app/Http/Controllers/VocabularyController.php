@@ -19,17 +19,14 @@ class VocabularyController extends Controller
     {
         $start = $request->start;
         $limit = $request->length;
-//        if (Auth::user()->role == 2){
-//            $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at",'DESC')->where("id",Auth::id())
-//                ->offset($start)->limit($limit)->get()->toArray());
-//        }
-//        else
-//        {
-//        dd(Auth::user()->role);
-            $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at",'DESC')
+        if (Auth::user()->role == 2) {
+            $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at", 'DESC')->where("user_id", Auth::id())
                 ->offset($start)->limit($limit)->get()->toArray());
-//        }
-        return response()->json(['data'=> $vocabulary,'recordsFiltered' => Vocabulary::count(), 'recordsTotal' => Vocabulary::count(), 'raws' => 1]);
+        } else {
+            $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at", 'DESC')
+                ->offset($start)->limit($limit)->get()->toArray());
+        }
+        return response()->json(['data' => $vocabulary, 'recordsFiltered' => Vocabulary::count(), 'recordsTotal' => Vocabulary::count(), 'raws' => 1]);
     }
 
 //    public static function getVocabulary($id=0){
@@ -48,24 +45,23 @@ class VocabularyController extends Controller
 //        }
 //    }
 
-    public function insertData($data){
-        $value=DB::table('Vocabularies')->where('word', $data['word'])->get();
-        try{
+    public function insertData($data)
+    {
+        $value = DB::table('Vocabularies')->where('word', $data['word'])->get();
+        try {
             DB::table('Vocabularies')->insert($data);
             return 1;
-        }
-        catch (Exception $exception)
-        {
+        } catch (Exception $exception) {
             return $exception;
         }
     }
 
-    public function edit(Request $request,$id){
+    public function edit(Request $request, $id)
+    {
         $result = new JsonResponse();
-        try{
+        try {
 
-            if ($id == -1)
-            {
+            if ($id == -1) {
                 $voca = new  Vocabulary($request->all());
                 $voca->user_id = Auth::id();
                 $voca->save();
@@ -73,43 +69,34 @@ class VocabularyController extends Controller
                 $mean->vocabulary_id = $voca->id;
                 $mean->save();
 
-            }
-            else
-            {
+            } else {
                 $vocab = Vocabulary::find($id);
-                $mean = Mean::where("vocabulary_id",$id);
+                $mean = Mean::where("vocabulary_id", $id);
                 $vocab->update($request->all());
-                if (!empty($mean))
-                {
+                if (!empty($mean)) {
                     $mean->update($request->all()["means"]);
                 }
             }
             $result->success(true);
-        }
-        catch (Exception $exception)
-        {
+        } catch (Exception $exception) {
             $result->fail($exception->getMessage());
         }
         return $result;
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $result = new JsonResponse();
-        try{
+        try {
             $voc = Vocabulary::find($id);
-            $mean = Mean::where("vocabulary_id",$id);
-            if (empty($voc))
-            {
+            $mean = Mean::where("vocabulary_id", $id);
+            if (empty($voc)) {
                 $result->fail(ResponseCode::fail, 'Có lỗi xảy ra, vui lòng thử lại sau!');
+            } else {
+                Mean::where("vocabulary_id", $id)->delete();
+                $result->success(Vocabulary::find($id)->delete());
             }
-            else
-            {
-                Mean::where("vocabulary_id",$id)->delete();
-                $result->success( Vocabulary::find($id)->delete());
-            }
-        }
-        catch (Exception $exception)
-        {
+        } catch (Exception $exception) {
             $result->fail($exception->getMessage());
         }
         return $result;

@@ -32,8 +32,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile', 'User\HomeController@getUserProfile')->name('user_profile'); //edit profile
         Route::prefix('vocabularymanager')->group(function() {
             Route::get('/', function() {
-                return view('admin/Vocabulary_Manager');
-            })->name('vocabulary-manager');
+                return view('user/Vocabulary_Manager_fuser');
+            })->name('vocabulary-manager-fuser');
             Route::get('getandfill', 'VocabularyController@getandfill');
             Route::post('edit/{id}', 'VocabularyController@edit');
             Route::post('delete/{id}', 'VocabularyController@delete');

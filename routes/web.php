@@ -30,6 +30,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/dictionary', 'User\HomeController@vocabularies')->name('user_dictionary');
         Route::get('/dictionary/{word}', 'User\HomeController@vocabularyDetail')->name('user_vocabulary_detail');
         Route::get('/profile', 'User\HomeController@getUserProfile')->name('user_profile'); //edit profile
+        Route::prefix('vocabularymanager')->group(function() {
+            Route::get('/', function() {
+                return view('admin/Vocabulary_Manager');
+            })->name('vocabulary-manager');
+            Route::get('getandfill', 'VocabularyController@getandfill');
+            Route::post('edit/{id}', 'VocabularyController@edit');
+            Route::post('delete/{id}', 'VocabularyController@delete');
+        });
     });
 
     Route::prefix('admin')->group(function() {

@@ -25,7 +25,7 @@ class VocabularyController extends Controller
 //        }
 //        else
 //        {
-        dd(Auth::user()->role);
+//        dd(Auth::user()->role);
             $vocabulary = array_values(Vocabulary::with('means')->orderBy("created_at",'DESC')
                 ->offset($start)->limit($limit)->get()->toArray());
 //        }

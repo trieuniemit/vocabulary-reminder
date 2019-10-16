@@ -1,32 +1,30 @@
-
-@extends('layouts.site_layout')
+@extends('layouts.admin_layout')
 
 @section('content')
     <!--================Home Banner Area =================-->
     <section class="banner_area">
-            <div class="banner_inner d-flex align-items-center">
-                <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
-                    data-background=""></div>
-                <div class="container">
-                    <div class="banner_content text-center">
-                        <h2>Quản lý từ vựng</h2>
-                        <div class="page_link">
-                            <a href="index.html">Trang chủ</a>
-                            <a href="blog.html">quản lý Từ vựng</a>
-                        </div>
-                    </div>
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
+                 data-background=""></div>
+            <div class="container">
+                <div class="banner_content text-center">
+{{--                    <h2>Quản lý từ vựng</h2>--}}
+{{--                    <div class="page_link">--}}
+{{--                        <a href="index.html">Trang chủ</a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     <!--================End Home Banner Area =================-->
 
 
     <!--================start content =================-->
-    <div class="container">
-        <div class="content">
+
+        <div class="card mb-3">
             <div class="card">
                 <div class="card-header">
-                    <h5>Danh sách từ vựng</h5>
+                    <h5>quản lý từ vựng</h5>
                 </div>
                 <div class="card-body">
                     <table id="tblresult" class="table table-striped table-bordered">
@@ -54,56 +52,56 @@
 
             </div>
         </div>
-    </div>
+
 
     <div class="modal fade" id="appdetail" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" style="max-width: 1200px;">
             <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title" id="modalTitle"></h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form method="post" class="form-horizontal" id="frmPost">
-                    @csrf
-                    <input type="hidden" id="idx" name="idx">
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="word" class=" form-control-label">Từ vựng</label></div>
-                        <div class="col-12 col-md-9"><input type="text" id="word" name="word" class="form-control"></div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="spelling" class=" form-control-label">Phiên âm</label></div>
-                        <div class="col-12 col-md-9"><input type="text" id="spelling" name="spelling" class="form-control"></div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="type" class=" form-control-label">Loại từ vựng</label></div>
-                        <div class="col-12 col-md-9"><input type="text" id="type" name="type" class="form-control"></div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="mean" class=" form-control-label">Nghĩa</label></div>
-                        <div class="col-12 col-md-9"><input type="text" id="mean" name="mean" class="form-control"></div>
-                    </div>
-                    <div class="row form-group">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form method="post" class="form-horizontal" id="frmPost">
+                        @csrf
+                        <input type="hidden" id="idx" name="idx">
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="word" class=" form-control-label">Từ vựng</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="word" name="word" class="form-control"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="spelling" class=" form-control-label">Phiên âm</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="spelling" name="spelling" class="form-control"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="type" class=" form-control-label">Loại từ vựng</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="type" name="type" class="form-control"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="mean" class=" form-control-label">Nghĩa</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="mean" name="mean" class="form-control"></div>
+                        </div>
+                        <div class="row form-group">
                             <div class="col col-md-3"><label for="status" class=" form-control-label">Trạng thái</label></div>
                             <div class="col-12 col-md-9">
-                            <select name="status" id="status" class="form-control">
+                                <select name="status" id="status" class="form-control">
                                     <option value="0">Không hoạt động</option>
                                     <option value="1">Hoạt động</option>
-                            </select>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                <button type="submit" class="btn btn-success" form="frmPost" id="btnSubmitDetail">Cập nhật</button>
-                <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Reset</button>
-            </div>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-success" form="frmPost" id="btnSubmitDetail">Cập nhật</button>
+                    <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Reset</button>
+                </div>
             </div>
         </div>
     </div>
@@ -143,5 +141,5 @@
 @endsection
 
 @section('script')
-    <script src="/js/Vocabulary.js"></script>
+    <script src="/js/admin/Vocabulary.js"></script>
 @endsection

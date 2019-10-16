@@ -49,7 +49,7 @@
 											<i class="fa fa-bell" aria-hidden="true"></i>
 											<span class="bell_count">2</span>
 										</span>
-									</a></li> 
+									</a></li>
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 											<img class="user_avatar" src="{{Auth::user()->avartar}}" alt="Avatar">
@@ -64,10 +64,10 @@
 										</ul>
 									</li>
 								@else
-									<li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li> 
-									<li class="nav-item"><a class="nav-link" href="{{route('vocabularies')}}">Từ vựng</a></li> 
-									<li class="nav-item"><a class="nav-link" href="{{route('login')}}">Đăng nhập</a></li> 
-									<li class="nav-item"><a class="nav-link" href="{{route('signup')}}">Đăng ký</a></li> 
+									<li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('vocabularies')}}">Từ vựng</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('login')}}">Đăng nhập</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('signup')}}">Đăng ký</a></li>
 								@endif
 							</ul>
 						</div>
@@ -109,7 +109,7 @@
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="/js/jquery-3.3.1.min.js"></script>
-        <script src="/js/toastr.min.js"></script>
+
         <script src="/js/popper.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/stellar.js"></script>
@@ -124,8 +124,8 @@
         <script src="/vendors/counter-up/jquery.counterup.js"></script>
         <script src="/js/mail-script.js"></script>
         <script src="/js/theme.js"></script>
-        <script type="text/javascript" src="/DataTables/js/jquery.dataTables.js"></script>
-        <script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>
-        @yield('script')
+{{--        <script type="text/javascript" src="/DataTables/js/jquery.dataTables.js"></script>--}}
+{{--        <script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>--}}
+
     </body>
 </html>

@@ -22,14 +22,7 @@ Route::post('/signup', 'AuthController@postSignup')->name('signup_post');
 
 //must be login
 Route::middleware('auth')->group(function () {
-    Route::prefix('vocabularymanager')->group(function() {
-        Route::get('/', function() {
-            return view('VocabularyManager');
-        })->name('vocabulary-manager');
-        Route::get('getandfill', 'VocabularyController@getandfill');
-        Route::post('edit/{id}', 'VocabularyController@edit');
-        Route::post('delete/{id}', 'VocabularyController@delete');
-    });
+
 
     //feature for user
     Route::group(['prefix' => 'user'], function() {
@@ -42,6 +35,15 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function() {
         Route::get('/', 'Admin\UserController@index')->name('admin_home');
         Route::resource('/users', 'Admin\UserController');
+        //for manager
+        Route::prefix('vocabularymanager')->group(function() {
+            Route::get('/', function() {
+                return view('admin/Vocabulary_Manager');
+            })->name('vocabulary-manager');
+            Route::get('getandfill', 'VocabularyController@getandfill');
+            Route::post('edit/{id}', 'VocabularyController@edit');
+            Route::post('delete/{id}', 'VocabularyController@delete');
+        });
     });
 
     Route::get('/logout', 'AuthController@logout')->name('logout');

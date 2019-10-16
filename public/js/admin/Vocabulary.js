@@ -23,17 +23,18 @@ $('#tblresult').DataTable({
     "dataType": 'json',
     responsive: true,
     "ajax": {
-        "url": "/vocabularymanager/getandfill",
+        "url": "/admin/vocabularymanager/getandfill",
         "type": "GET",
         "dataSrc": function(json){
             var index = 0;
             json.data.forEach(element => {
-                element.type = element.mean == null ? "" : element.mean.type;
-                element.mean = element.mean == null ? "" : element.mean.mean;
-                element.Method = `<a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa fa-gear"></i></a> &nbsp
-                                 <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o"></i></a>`;
+                element.type = element.means[0] == null ? "" : element.means[0].type;
+                element.mean = element.means[0] == null ? "" : element.means[0].mean;
+                element.Method = `<a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit" style="color:blue"></i></a> &nbsp
+                                <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o" style="color:red"></i></a>`;
                 index++;
             });
+
             return json.data;
         },
     },
@@ -57,7 +58,7 @@ $('#tblresult').DataTable({
         {
             "targets": 8,
             "render": function(data) {
-                return data == 1 ? `<i class="fa fa-toggle-on" title="Hoạt động"></i>` : `<i class="fa fa-toggle-off" title="Không hoạt động"></i>`;
+                return data == 1 ? `<i class="fa fa-toggle-on" title="Hoạt động" style="color:green"></i>` : `<i class="fa fa-toggle-off" title="Không hoạt động" ></i>`;
             }
         }
     ],
@@ -143,11 +144,12 @@ $('#frmPost').submit((e) => {
     delete form.type;
     var formData = new FormData();
         $.ajax({
-            url: "/vocabularymanager/edit/"+id,
+            url: "/admin/vocabularymanager/edit/"+id,
             method: "POST",
             data: form,
         })
         .done((data) => {
+            console.log(data)
             if (data.code === 1) {
                 $('#tblresult').DataTable().ajax.reload();
                 $("#appdetail").modal('hide');
@@ -186,13 +188,13 @@ $('#frmDelete').submit((e) => {
     var id = $('#idx').val();
     //var guid = $("#txtguid").val();
     $.ajax({
-        url: "/vocabularymanager/delete/"+id,
+        url: "/admin/vocabularymanager/delete/"+id,
         method: "POST",
         data: form,
         dataType: 'json'
     })
     .done((data) => {
-        console.log(data);
+        console.log(data.code);
         if (data.code === 1) {
             $('#tblresult').DataTable().ajax.reload();
             $("#appConfirm").modal('hide');

@@ -41,7 +41,7 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="{{route('users.index')}}">
+        <a class="nav-link" href="{{route('user_remind')}}">
           <i class="fas fa-fw fa-palette"></i>
           <span>Trang người dùng</span>
         </a>

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Vocabulary;
 use App\Remind;
@@ -9,7 +10,7 @@ use App\Remind;
 class RemindController extends Controller
 {
     function index() {
-        return view('remind');
+        return view('user.remind');
     }
 
     function create(Request $request) {

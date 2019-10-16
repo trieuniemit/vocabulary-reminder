@@ -26,9 +26,9 @@ Route::middleware('auth')->group(function () {
     //feature for user
     Route::group(['prefix' => 'user'], function() {
         //hoang thuc
-        Route::get('/remind', 'RemindController@index')->name('user_remind');
-        Route::post('/remind', 'RemindController@create')->name('remind_post');
-        
+        Route::get('/remind', 'User\RemindController@index')->name('user_remind');
+        Route::post('/remind', 'User\RemindController@create')->name('remind_post');
+
         //niem
         Route::get('/dictionary', 'User\HomeController@vocabularies')->name('user_dictionary');
         Route::get('/dictionary/{word}', 'User\HomeController@vocabularyDetail')->name('user_vocabulary_detail');

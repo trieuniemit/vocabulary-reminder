@@ -1,7 +1,7 @@
 @extends('layouts.site_layout')
 
 @section('content')
-<div class="login_wrap p_120">
+<div class="login_wrap p_120" style="padding-top: 80px">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

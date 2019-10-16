@@ -2,25 +2,25 @@
     "use strict"
 	
 	
-	var nav_offset_top = $('header').height() + 50; 
+	//var nav_offset_top = $('header').height() + 50; 
     /*-------------------------------------------------------------------------------
 	  Navbar 
 	-------------------------------------------------------------------------------*/
 
 	//* Navbar Fixed  
-    function navbarFixed(){
-        if ( $('.header_area').length ){ 
-            $(window).scroll(function() {
-                var scroll = $(window).scrollTop();   
-                if (scroll >= nav_offset_top ) {
-                    $(".header_area").addClass("navbar_fixed");
-                } else {
-                    $(".header_area").removeClass("navbar_fixed");
-                }
-            });
-        };
-    };
-    navbarFixed();
+    // function navbarFixed(){
+    //     if ( $('.header_area').length ){ 
+    //         $(window).scroll(function() {
+    //             var scroll = $(window).scrollTop();   
+    //             if (scroll >= nav_offset_top ) {
+    //                 $(".header_area").addClass("navbar_fixed");
+    //             } else {
+    //                 $(".header_area").removeClass("navbar_fixed");
+    //             }
+    //         });
+    //     };
+    // };
+    // navbarFixed();
 	
 	
 	/*----------------------------------------------------*/
@@ -152,6 +152,31 @@
         //         $(this).parent().find('li[data-value="'+($(this).attr('data-val'))+'"]').addClass('selected focus');
         //     }, 300);
         // });
+
+        $('#quick_search input').keyup(function() {
+            if($(this).val().trim() != '') {
+                $.ajax({
+                    url: "/quick_search", 
+                    data: {
+                        q: $(this).val()
+                    },
+                    success: function(data){
+                        var html = '';
+                        data.forEach(function(item){
+                            html += `<li><a href="${item.link}">${item.word} <small>/${item.spelling}/</small> <span>- ${item.mean}</span></a>`;
+                        });
+
+                        $('.quick_search_result ul').html(html);
+
+                        $('.quick_search_result').show();
+                    }
+                });
+            } else {
+                $('.quick_search_result').hide();
+            }
+        });
+
+        $('.show_tooltip').tooltip({ boundary: 'window' })
 	}); 
 	
 	/*----------------------------------------------------*/

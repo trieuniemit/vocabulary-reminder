@@ -27,7 +27,7 @@ class UserController extends Controller
     public function create()
     {   
         $title = 'Thêm người dùng mới';
-        return view('admin.users_manager_create', compact('title'));
+        return view('admin.users_manager_create_edit', compact('title'));
     }
 
     /**

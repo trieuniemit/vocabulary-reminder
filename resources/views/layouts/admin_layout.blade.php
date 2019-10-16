@@ -52,13 +52,13 @@
                 <span>Trang người dùng</span>
             </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="{{route('vocabulary-manager')}}">
                 <i class="fas fa-fw fa-book"></i>
                 <span>Quản từ vựng</span>
             </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="{{route('admin_home')}}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Quản lý người dùng</span>

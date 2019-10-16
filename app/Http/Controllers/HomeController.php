@@ -14,6 +14,7 @@ class HomeController extends Controller
     }
 
     function index() {
+        return view('home');
         if(Auth::check()) {
             return redirect(route('admin_home'));   
         }
@@ -51,6 +52,7 @@ class HomeController extends Controller
 
     function vocabulary(Request $request) {
         $vocas = null;
+        
         $urlArr = [];
         
         if(isset($request->q)) {

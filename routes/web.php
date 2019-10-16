@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', 'HomeController@index');
 //login
 Route::get('/login', 'AuthController@getLogin')->name('login');
@@ -26,7 +25,15 @@ Route::middleware('auth')->group(function () {
 
     //feature for user
     Route::group(['prefix' => 'user'], function() {
-        Route::get('/remind', 'RemindController@getRemind')->name('user_remind');
+        Route::get('/', function() {
+            return redirect(route('user_remind'));
+        });
+
+        //hoang thuc
+        Route::get('/remind', 'User\RemindController@index')->name('user_remind');
+        Route::post('/remind', 'User\RemindController@create')->name('remind_post');
+
+        //niem
         Route::get('/dictionary', 'User\HomeController@vocabularies')->name('user_dictionary');
         Route::get('/dictionary/{word}', 'User\HomeController@vocabularyDetail')->name('user_vocabulary_detail');
         Route::get('/profile', 'User\HomeController@getUserProfile')->name('user_profile'); //edit profile

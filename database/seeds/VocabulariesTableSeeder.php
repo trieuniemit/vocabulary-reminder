@@ -13,6 +13,7 @@ class VocabulariesTableSeeder extends Seeder
     {
         $path = resource_path('json/edict.json');
         $vocas = json_decode(file_get_contents($path));
+        $i = 0;
         foreach($vocas as $vc) {
             try{
                 $v = DB::table('vocabularies')->insertGetId([
@@ -26,6 +27,8 @@ class VocabulariesTableSeeder extends Seeder
                     'mean' => $vc->mean,
                     'type' => $vc->type
                 ]);
+                $i++;
+                if($i>100) break;
             }  catch (Exception $e) {
                 
             }

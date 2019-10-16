@@ -124,8 +124,6 @@
         <script src="/vendors/counter-up/jquery.counterup.js"></script>
         <script src="/js/mail-script.js"></script>
         <script src="/js/theme.js"></script>
-{{--        <script type="text/javascript" src="/DataTables/js/jquery.dataTables.js"></script>--}}
-{{--        <script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>--}}
 
     </body>
 </html>

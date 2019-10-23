@@ -77,8 +77,8 @@
         </header>
 		<!--================Header Menu Area =================-->
 
-		<div class="content-section" style="min-height:calc(100vh - 140px);background:#f3f1f1;padding-top:50px;padding-bottom: 25px">
-			<div class="container">
+		<div class="content-section" style="width: 100%;min-height:calc(100vh - 140px);background:#f3f1f1;padding-top:50px;padding-bottom: 25px">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-2">
 						<div class="menu_features">

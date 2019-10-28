@@ -75,6 +75,8 @@
                                 <select name="status" id="status" class="form-control">
                                     <option value="0">Không hoạt động</option>
                                     <option value="1">Hoạt động</option>
+                                    <option value="2">Chỉ mình tôi</option>
+                                    <option value="3">Chỉ Công khai(Chờ duyệt)</option>
                                 </select>
                             </div>
                         </div>

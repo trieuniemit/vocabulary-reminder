@@ -59,6 +59,14 @@ Route::middleware('auth')->group(function () {
             Route::post('edit/{id}', 'VocabularyController@edit');
             Route::post('delete/{id}', 'VocabularyController@delete');
         });
+        Route::prefix('notificationmanager')->group(function() {
+            Route::get('/', function() {
+                return view('admin/Notification_Manager');
+            })->name('notification-manager');
+            Route::get('getandfill', 'VocabularyController@getandfill');
+            Route::post('edit/{id}', 'VocabularyController@edit');
+            Route::post('delete/{id}', 'VocabularyController@delete');
+        });
     });
 
     Route::get('/logout', 'AuthController@logout')->name('logout');

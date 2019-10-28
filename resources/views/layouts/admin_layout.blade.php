@@ -59,6 +59,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('notification-manager')}}">
+                <i class="fas fa-bell"></i>
+                <span>Quản lý thông báo</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{route('admin_home')}}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Quản lý người dùng</span>

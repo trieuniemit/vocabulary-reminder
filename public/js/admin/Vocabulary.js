@@ -26,6 +26,7 @@ var table = $('#tblresult').DataTable({
         "url": "/admin/vocabularymanager/getandfill",
         "type": "GET",
         "dataSrc": function(json){
+            console.log(json)
             var index = 0;
             json.data.forEach(element => {
                 element.type = element.means[0] == null ? "" : element.means[0].type;
@@ -57,9 +58,28 @@ var table = $('#tblresult').DataTable({
         },
         // { "responsivePriority": 2, "targets": 2 },
         {
+            //0 : không hoạt động
+            //1 : hoạt động
+            //2 : private
+            //3 : public( chờ duyệt )
+            //4 : duyệt
+            //5 : không hợp lệ
             "targets": 8,
             "render": function(data) {
-                return data == 1 ? `<i class="fa fa-toggle-on" title="Hoạt động" style="color:green"></i>` : `<i class="fa fa-toggle-off" title="Không hoạt động" ></i>`;
+                switch (data) {
+                    case 0: return `<i class="fa fa-toggle-off" title="Không hoạt động" ></i>`;
+                    break;
+                    case 1: return `<i class="fa fa-toggle-on" title="Hoạt động" style="color:green"></i>`;
+                    break;
+                    case 2: return `<i class="fa fa-lock" title="Chỉ mình tôi" style="color:violet"></i>`;
+                        break;
+                    case 3: return `<i class="fa fa-users" title="Công khai( chờ duyệt )" style="color:blue"></i>`;
+                        break;
+                    case 4: return `<i class="fa fa-check" title="Duyệt" style="color:green"></i>`;
+                        break;
+                    case 5: return `<i class="fa fa-times" title="Không hợp lệ" style="color:red"></i>`;
+                        break;
+                }
             }
         }
     ],

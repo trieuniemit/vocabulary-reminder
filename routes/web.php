@@ -49,6 +49,10 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->group(function() {
         Route::get('/', 'Admin\UserController@index')->name('admin_home');
+        //admin_setting
+        Route::get('/settings', 'Admin\SystemController@index')->name('admin_setting');
+        Route::post('/settings', 'Admin\SystemController@postSetting');
+        
         Route::resource('/users', 'Admin\UserController');
         //for manager
         Route::prefix('vocabularymanager')->group(function() {

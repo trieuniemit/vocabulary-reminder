@@ -47,17 +47,20 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="{{route('users.index')}}">
+            <a class="nav-link" href="{{route('user_remind')}}">
                 <i class="fas fa-fw fa-palette"></i>
                 <span>Trang người dùng</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('vocabulary-manager')}}">
-                <i class="fas fa-fw fa-book"></i>
-                <span>Quản từ vựng</span>
-            </a>
-        </li>
+        @if(Auth::user()->role == 2) 
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('vocabulary-manager')}}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Quản từ vựng</span>
+                </a>
+            </li>
+        @endif
+        @if(Auth::user()->role == 1) 
         <li class="nav-item">
             <a class="nav-link" href="{{route('notification-manager')}}">
                 <i class="fas fa-bell"></i>
@@ -71,10 +74,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('admin_setting')}}">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Cài đặt hệ thống</span></a>
+                <span>Cài đặt hệ thống</span>
+            </a>
         </li>
+        @endif
+       
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-sign-out-alt"></i>

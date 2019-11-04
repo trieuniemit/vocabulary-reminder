@@ -3409,10 +3409,23 @@ img.user_avatar {
   /* background: #fff; */
 }
 
-.big_icon {
+.big_icon:hover, a.active .big_icon {
   color: #fff;
+}
+
+.big_icon {
+  color: #c5c5c5;
   padding: 13px;
+  margin: 0;
   text-align: center;
+  border-bottom: 1px solid #dedede;
+  border-radius: 0;
+  transition-duration: 0.3s;
+}
+
+
+a:last-child .big_icon {
+  border: 0;
 }
 
 .big_icon i {
@@ -3423,18 +3436,31 @@ img.user_avatar {
   font-size: 20px;
 }
 
+.active .big_icon::after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: -2px;
+  top: 35px;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-right: 13px solid #ffffff;
+}
+
 .content-section h2 {
   color: #fff;
   font-family: arial
 }
 
 .word_elm {
-  border-right: 1px solid #ccc;
   display: inline-block;
+  width: 180px;
   padding-right: 15px;
   margin: 5px 10px 7px 5px;
 }
 
-.word_elm:last-child {
-  border-right: none;
+.word_elm h5 {
+  font-weight: normal;
 }

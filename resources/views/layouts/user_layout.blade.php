@@ -33,9 +33,9 @@
         <header class="header_area navbar_fixed">
             <div class="main_menu">
             	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container">
+					<div class="container-fluid">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="/"><img src="/img/logo.png" alt=""></a>
+						<a class="navbar-brand logo_h" style="margin-left: 40px" href="/"><img src="/img/logo.png" alt=""></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -78,19 +78,19 @@
         </header>
 		<!--================Header Menu Area =================-->
 
-		<div class="content-section" style="width: 100%;min-height:calc(100vh - 140px);background:#f3f1f1;padding-top:50px;padding-bottom: 25px">
+		<div class="content-section" style="width: 100%;">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-2">
+					<div class="col-md-2" style="padding: 35px 0;min-height: calc(100vh - 160px);background: #696868;">
 						<div class="menu_features">
 							<a href="{{route('user_remind')}}">
-								<div class="alert alert-primary big_icon" style="background-color: #dc3545" role="alert">
+								<div class="alert big_icon" role="alert">
 									<i class="fa fa-bell" aria-hidden="true"></i>
 									<p>Nhắc nhở</p>
 								</div>
 							</a>
 							<a href="{{route('user_dictionary')}}">
-								<div class="alert alert-info big_icon" style="background-color: #28a745;" role="alert">
+								<div class="alert big_icon" role="alert">
 									<i class="fa fa-book" aria-hidden="true"></i>
 									<p>Từ điển Online</p>
 								</div>
@@ -102,30 +102,27 @@
 								</div>
 							</a>
 							<a href="#">
-								<div class="alert alert-success big_icon" style="background-color: #f88900" role="alert">
+								<div class="alert big_icon" role="alert">
 									<i class="fa fa-suitcase" aria-hidden="true"></i>
 									<p>Ôn tập từ vựng</p>
 								</div>
 							</a>
 							<a href="{{route('user_profile')}}">
-								<div class="alert alert-danger big_icon" style="background-color: #17a2b8" role="alert">
+								<div class="alert big_icon" role="alert">
 									<i class="fa fa-user" aria-hidden="true"></i>
 									<p>Thông tin cá nhân</p>
 								</div>
 							</a>
 							<a href="{{route('logout')}}">
-								<div class="alert alert-warning big_icon" style="background-color: #999999" role="alert">
+								<div class="alert big_icon" role="alert">
 									<i class="fa fa-sign-out" aria-hidden="true"></i>
 									<p>Thoát</p>
 								</div>
 							</a>
 						</div>
 					</div>
-					<div class="col-md-10">
-						<div class="card border-secondary mb-3">
-							<div class="card-header bg-secondary">
-								<h2>{{isset($title)? $title: 'Hệ thống nhắc nhở học từ vựng'}}</h2>
-							</div>
+					<div class="col-md-10" style="padding-right:0">
+						<div class="card" style="border: 0;padding-top: 30px;border-radius: 0;">
 							<div class="card-body">
 								@yield('content')
 							</div>
@@ -137,7 +134,7 @@
 
         <!--================ start footer Area  =================-->
 		<footer class="footer-area">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row footer-bottom d-flex justify-content-between align-items-center">
 						<p class="col-lg-8 col-md-8 footer-text m-0">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -179,8 +176,17 @@
         <script src="/js/mail-script.js"></script>
         <script src="/js/theme.js"></script>
         <script type="text/javascript" src="/DataTables/js/jquery.dataTables.js"></script>
-        <script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>
-        <script type="text/javascript" src="/DataTables/js/dataTables.responsive.js"></script>
+		<script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>
+		
+		<script>
+			current = window.location.pathname.split('/')[2];
+			console.log('Current page', current);
+			$('.menu_features a').each((index, elm)=>{
+				if(new RegExp(current).test($(elm).attr('href'))) {
+					$(elm).addClass('active');
+				}
+			})
+		</script>
         @yield('script')
     </body>
 </html>

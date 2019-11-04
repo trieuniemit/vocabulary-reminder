@@ -72,7 +72,8 @@ Route::middleware('auth')->group(function () {
             Route::post('delete/{id}', 'VocabularyController@delete');
         });
     });
-
+    //Dũng
+    Route::get('/notifications', 'UsersController@notifications');
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });
 

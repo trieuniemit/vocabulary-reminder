@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
         //hoang thuc
         Route::get('/remind', 'User\RemindController@index')->name('user_remind');
         Route::post('/remind', 'User\RemindController@create')->name('remind_post');
+        Route::delete('/remind', 'User\RemindController@delete')->name('remind_delete');
 
         //niem
         Route::get('/dictionary', 'User\HomeController@vocabularies')->name('user_dictionary');

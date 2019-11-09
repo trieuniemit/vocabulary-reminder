@@ -47,13 +47,15 @@ class VocabularyController extends Controller
 
     public function insertData($data)
     {
+        $result = new JsonResponse();
         $value = DB::table('Vocabularies')->where('word', $data['word'])->get();
         try {
             DB::table('Vocabularies')->insert($data);
-            return 1;
+            $result->success(true);
         } catch (Exception $exception) {
-            return $exception;
+            $result->fail($exception->getMessage());
         }
+        return $result;
     }
 
     public function edit(Request $request, $id)

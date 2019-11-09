@@ -7,18 +7,19 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class UserFollowed extends Notification
+class TestNotification extends Notification
 {
     use Queueable;
-    protected $follower;
+
+    protected $data;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $follower)
+    public function __construct($data)
     {
-        $this->follower = $follower;
+        $this->data = $data;
     }
 
     /**
@@ -29,7 +30,7 @@ class UserFollowed extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'broadcast'];
+        return ['database'];
     }
 
     /**
@@ -41,9 +42,9 @@ class UserFollowed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -54,22 +55,6 @@ class UserFollowed extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            'id' => $this->id,
-            'read_at' => null,
-            'data' => [
-                'follower_id' => $this->follower->id,
-                'follower_name' => $this->follower->name,
-            ],
-        ];
+        return $this->data;
     }
-
-    public function toDatabase($notifiable)
-    {
-        return [
-            'follower_id' => $this->follower->id,
-            'follower_name' => $this->follower->name,
-        ];
-    }
-
 }

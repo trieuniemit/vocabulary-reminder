@@ -43,6 +43,19 @@
 						</button>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                            <li class="nav-item dropdown dropdown-notifications">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Notification<span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
+                                    @foreach (Auth::user()->notifications as $notification)
+                                        <a class="dropdown-item" href="#">
+                                            <span>{{ $notification->data['title'] }}</span><br>
+                                            <small>{{ $notification->data['content'] }}</small>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </li>
 							<ul class="nav navbar-nav menu_nav ml-auto">
 								@if (Auth::check())
 									<li class="nav-item"><a class="nav-link" href="#">
@@ -177,7 +190,26 @@
         <script src="/js/theme.js"></script>
         <script type="text/javascript" src="/DataTables/js/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="/DataTables/js/dataTables.bootstrap4.min.js"></script>
-		
+
+        <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+        <script type="text/javascript">
+            var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+                encrypted: true,
+                cluster: "ap1"
+            });
+            var channel = pusher.subscribe('NotificationEvent');
+            channel.bind('send-message', function(data) {
+                var newNotificationHtml = `
+        <a class="dropdown-item" href="#">
+            <span>${data.title}</span><br>
+            <small>${data.content}</small>
+        </a>
+        `;
+
+                $('.menu-notification').prepend(newNotificationHtml);
+            });
+        </script>
+
 		<script>
 			current = window.location.pathname.split('/')[2];
 			console.log('Current page', current);

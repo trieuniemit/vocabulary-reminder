@@ -29,7 +29,8 @@ class SocialAccountService
                     'email' => $email,
                     'name' => $providerUser->getName(),
                     'password' => $providerUser->getName(),
-                    'gender' => 1,
+                    'gender' => 0,
+                    'role' => 2,
                     'birthday' => '1998-02-06',
                     'status' => 1
                 ]);

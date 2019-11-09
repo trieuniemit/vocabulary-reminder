@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
         //admin_setting
         Route::get('/settings', 'Admin\SystemController@index')->name('admin_setting');
         Route::post('/settings', 'Admin\SystemController@postSetting');
-        
+
         Route::resource('/users', 'Admin\UserController');
         //for manager
         Route::prefix('vocabularymanager')->group(function() {
@@ -69,16 +69,18 @@ Route::middleware('auth')->group(function () {
             Route::post('delete/{id}', 'VocabularyController@delete');
         });
         Route::prefix('notificationmanager')->group(function() {
-            Route::get('/', function() {
-                return view('admin/Notification_Manager');
+            Route::get('/',function (){
+                return view('admin/notification');
             })->name('notification-manager');
-            Route::get('getandfill', 'VocabularyController@getandfill');
-            Route::post('edit/{id}', 'VocabularyController@edit');
-            Route::post('delete/{id}', 'VocabularyController@delete');
+            Route::get('getandfill', 'SendNotificationController@getandfill');
+            Route::post('edit', 'SendNotificationController@edit');
+            Route::post('delete/{id}', 'SendNotificationController@delete');
         });
     });
     //Dũng
-    Route::get('/notifications', 'UsersController@notifications');
+//    Route::get('notification', 'SendNotificationController@create')->name('notification.create');
+//    Route::post('notification', 'SendNotificationController@store')->name('notification.store');
+    //!
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });
 

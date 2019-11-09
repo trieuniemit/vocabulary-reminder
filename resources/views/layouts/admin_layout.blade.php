@@ -52,7 +52,7 @@
                 <span>Trang người dùng</span>
             </a>
         </li>
-        @if(Auth::user()->role == 2) 
+        @if(Auth::user()->role == 2)
             <li class="nav-item">
                 <a class="nav-link" href="{{route('vocabulary-manager')}}">
                     <i class="fas fa-fw fa-book"></i>
@@ -60,11 +60,17 @@
                 </a>
             </li>
         @endif
-        @if(Auth::user()->role == 1) 
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('vocabulary-manager')}}">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Quản từ vựng</span>
+            </a>
+        </li>
+        @if(Auth::user()->role == 1)
         <li class="nav-item">
             <a class="nav-link" href="{{route('notification-manager')}}">
                 <i class="fas fa-bell"></i>
-                <span>Quản lý thông báo</span>
+                <span>Quản lý thông báoo</span>
             </a>
         </li>
         <li class="nav-item">
@@ -80,7 +86,7 @@
             </a>
         </li>
         @endif
-       
+
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-sign-out-alt"></i>

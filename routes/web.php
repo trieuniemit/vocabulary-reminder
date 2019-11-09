@@ -19,6 +19,10 @@ Route::post('/login', 'AuthController@postLogin')->name('login_post');
 Route::get('/signup', 'AuthController@getSignup')->name('signup');
 Route::post('/signup', 'AuthController@postSignup')->name('signup_post');
 
+
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
 //must be login
 Route::middleware('auth')->group(function () {
 

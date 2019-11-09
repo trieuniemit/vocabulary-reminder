@@ -17,15 +17,16 @@
     };
 })(jQuery);
 
-$('#tblresult').DataTable({
+var table = $('#tblresult').DataTable({
+    responsive: true,
     "processing": true,
     "serverSide": true,
     "dataType": 'json',
-    responsive: true,
     "ajax": {
         "url": "/admin/vocabularymanager/getandfill",
         "type": "GET",
         "dataSrc": function(json){
+            console.log(json)
             var index = 0;
             json.data.forEach(element => {
                 element.type = element.means[0] == null ? "" : element.means[0].type;
@@ -55,10 +56,30 @@ $('#tblresult').DataTable({
             "orderable": false,
             "targets": 9
         },
+        // { "responsivePriority": 2, "targets": 2 },
         {
+            //0 : không hoạt động
+            //1 : hoạt động
+            //2 : private
+            //3 : public( chờ duyệt )
+            //4 : duyệt
+            //5 : không hợp lệ
             "targets": 8,
             "render": function(data) {
-                return data == 1 ? `<i class="fa fa-toggle-on" title="Hoạt động" style="color:green"></i>` : `<i class="fa fa-toggle-off" title="Không hoạt động" ></i>`;
+                switch (data) {
+                    case 0: return `<i class="fa fa-toggle-off" title="Không hoạt động" ></i>`;
+                    break;
+                    case 1: return `<i class="fa fa-toggle-on" title="Hoạt động" style="color:green"></i>`;
+                    break;
+                    case 2: return `<i class="fa fa-lock" title="Chỉ mình tôi" style="color:violet"></i>`;
+                        break;
+                    case 3: return `<i class="fa fa-users" title="Công khai( chờ duyệt )" style="color:blue"></i>`;
+                        break;
+                    case 4: return `<i class="fa fa-check" title="Duyệt" style="color:green"></i>`;
+                        break;
+                    case 5: return `<i class="fa fa-times" title="Không hợp lệ" style="color:red"></i>`;
+                        break;
+                }
             }
         }
     ],
@@ -91,7 +112,11 @@ $('#tblresult').DataTable({
         }
     },
 });
-
+$.fn.dataTable.Responsive.breakpoints = [
+    { name: 'spelling', width: Infinity },
+    { name: 'mean',  width: 1024 },
+    { name: 'views',  width: 768 }
+];
 $("#btnAdd").click(function () {
     $("#idx").val(-1);
     $("#word").val('');
@@ -107,7 +132,6 @@ $("#tblresult").on("click", ".btnEdit", function () {
     // x('sss');
     //message().success("demo");
     var obj = $("#tblresult").DataTable().row($(this).parents('tr')).data();
-    console.log(obj.status);
     $("#idx").val(obj.id);
     $("#word").val(obj.word);
     $("#spelling").val(obj.spelling );
@@ -165,7 +189,6 @@ $('#frmPost').submit((e) => {
         });
     $("#btnSubmitDetail").removeAttr("disabled");
 });
-
 toastr.options = {
     "closeButton": true,
     "debug": false,

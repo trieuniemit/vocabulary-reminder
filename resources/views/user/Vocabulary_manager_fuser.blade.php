@@ -1,57 +1,41 @@
-@extends('layouts.admin_layout')
+@extends('layouts.user_layout')
 
 @section('content')
-    <!--================Home Banner Area =================-->
-    <section class="banner_area">
-        <div class="banner_inner d-flex align-items-center">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
-                 data-background=""></div>
-            <div class="container">
-                <div class="banner_content text-center">
-{{--                    <h2>Quản lý từ vựng</h2>--}}
-{{--                    <div class="page_link">--}}
-{{--                        <a href="index.html">Trang chủ</a>--}}
-{{--                    </div>--}}
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================End Home Banner Area =================-->
 
 
     <!--================start content =================-->
 
-        <div class="card mb-3">
-            <div class="card">
-                <div class="card-header">
-                    <h5>quản lý từ vựng</h5>
-                </div>
-                <div class="card-body">
-                    <table id="tblresult" class="table table-striped table-bordered">
-                        <thead>
-                        <th>STT</th>
-                        <th>id</th>
-                        <th>Từ vựng</th>
-                        <th>Phiên âm</th>
-                        <th>Loại từ</th>
-                        <th>Nghĩa</th>
-                        <th>Lượt xem</th>
-                        <th>Đánh giá</th>
-                        <th>Trạng thái</th>
-                        <th>Thao tác</th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="button" class="btn btn-primary" id="btnAdd" name="btnAdd"><i class="fa fa-plus"></i>&nbsp; Thêm</button>
-                        </div>
+    <div class="card mb-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>quản lý từ vựng</h5>
+            </div>
+            <div class="card-body">
+                <table id="tblresult" class="table table-striped table-bordered">
+                    <thead>
+                    <th>STT</th>
+                    <th>id</th>
+                    <th>Từ vựng</th>
+                    <th>Phiên âm</th>
+                    <th>Loại từ</th>
+                    <th>Nghĩa</th>
+                    <th>Lượt xem</th>
+                    <th>Đánh giá</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary" id="btnAdd" name="btnAdd"><i class="fa fa-plus"></i>&nbsp; Thêm</button>
                     </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
 
 
     <div class="modal fade" id="appdetail" tabindex="-1" role="dialog">
@@ -91,8 +75,8 @@
                                 <select name="status" id="status" class="form-control">
                                     <option value="0">Không hoạt động</option>
                                     <option value="1">Hoạt động</option>
-                                    <option value="4">Duyệt</option>
-                                    <option value="5">Không hợp lệ</option>
+                                    <option value="2">Chỉ mình tôi</option>
+                                    <option value="3">Chỉ Công khai(Chờ duyệt)</option>
                                 </select>
                             </div>
                         </div>

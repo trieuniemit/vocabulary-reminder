@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/responsive.css">
         <link rel="stylesheet" type="text/css" href="/DataTables/css/dataTables.bootstrap4.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/DataTables/css/responsive.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
     </head>
     <body>
@@ -49,7 +50,7 @@
 											<i class="fa fa-bell" aria-hidden="true"></i>
 											<span class="bell_count">2</span>
 										</span>
-									</a></li> 
+									</a></li>
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 											<img class="user_avatar" src="{{Auth::user()->avartar}}" alt="Avatar">
@@ -64,10 +65,10 @@
 										</ul>
 									</li>
 								@else
-									<li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li> 
-									<li class="nav-item"><a class="nav-link" href="{{route('vocabularies')}}">Từ vựng</a></li> 
-									<li class="nav-item"><a class="nav-link" href="{{route('login')}}">Đăng nhập</a></li> 
-									<li class="nav-item"><a class="nav-link" href="{{route('signup')}}">Đăng ký</a></li> 
+									<li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('vocabularies')}}">Từ vựng</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('login')}}">Đăng nhập</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('signup')}}">Đăng ký</a></li>
 								@endif
 							</ul>
 						</div>
@@ -94,8 +95,8 @@
 									<p>Từ điển Online</p>
 								</div>
 							</a>
-							<a href="#">
-								<div class="alert big_icon" role="alert">
+							<a href="{{route('vocabulary-manager-fuser')}}">
+								<div class="alert alert-secondary big_icon" style="background-color: #007bff;" role="alert">
 									<i class="fa fa-th-list" aria-hidden="true"></i>
 									<p>Quản lý từ vựng</p>
 								</div>

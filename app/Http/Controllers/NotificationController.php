@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Commons\ResponseCode;
 use App\Commons\JsonResponse;
-use Illuminate\Http\Request;
-use App\Vocabulary;
+use App\Commons\ResponseCode;
 use App\Mean;
-use Auth;
+use App\Vocabulary;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Exception;
 
-class VocabularyController extends Controller
+class NotificationController extends Controller
 {
     //lấy dữ liệu đổ ra bảng
     public function getandfill(Request $request)

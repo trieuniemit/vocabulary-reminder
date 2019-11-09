@@ -14,10 +14,9 @@ class HomeController extends Controller
     }
 
     function index() {
-        return view('home');
-        if(Auth::check()) {
-            return redirect(route('admin_home'));   
-        }
+        // if(Auth::check()) {
+        //     return redirect(route('admin_home'));   
+        // }
         $vocas = Vocabulary::orderBy('created_at')->limit(18)->get();
         //load relationship
         $vocas->load('means');
@@ -83,6 +82,14 @@ class HomeController extends Controller
         $vocas->load('means');
 
         return view('vocabulary', compact('vocas', 'urlArr'));
+    }
+
+    function vocabularyDetail($word) {
+        $title = 'Nghĩa của từ '.$word;
+
+        $voca = Vocabulary::where('word', $word)->first();
+        $voca->load('means');
+        return view('user.vocabulary_detail', compact('voca', 'title'));
     }
 
 }

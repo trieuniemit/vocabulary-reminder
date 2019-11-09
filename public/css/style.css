@@ -3464,3 +3464,22 @@ a:last-child .big_icon {
 .word_elm h5 {
   font-weight: normal;
 }
+
+.word_elm:last-child {
+  border-right: none;
+}
+
+
+.success{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    background: #1af11a;
+    top: 0;
+    right: 0;
+    display:none;
+}
+.card-img{
+  position: relative;
+}

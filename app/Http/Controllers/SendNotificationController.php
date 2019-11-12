@@ -48,7 +48,7 @@ class SendNotificationController extends Controller
     {
         $result = new JsonResponse();
         try {
-            $user = User::find(1); // id của user đã đăng kí ở trên, user này sẻ nhận được thông báo
+            $user = User::find(2); // id của user đã đăng kí ở trên, user này sẻ nhận được thông báo
             $data = $request->only([
                 'title',
                 'content',

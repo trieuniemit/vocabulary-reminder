@@ -43,27 +43,22 @@
 						</button>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                            <li class="nav-item dropdown dropdown-notifications">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Notification<span class="caret"></span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
-                                    @foreach (Auth::user()->notifications as $notification)
-                                        <a class="dropdown-item" href="#">
-                                            <span>{{ $notification->data['title'] }}</span><br>
-                                            <small>{{ $notification->data['content'] }}</small>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </li>
+
 							<ul class="nav navbar-nav menu_nav ml-auto">
 								@if (Auth::check())
-									<li class="nav-item"><a class="nav-link" href="#">
-										<span class="bell">
-											<i class="fa fa-bell" aria-hidden="true"></i>
-											<span class="bell_count">2</span>
-										</span>
-									</a></li>
+                                    <li class="nav-item dropdown dropdown-notifications">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <i class="fa fa-bell" aria-hidden="true"></i><span class="caret"></span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
+                                            @foreach (Auth::user()->notifications as $notification)
+                                                <a class="dropdown-item" href="#">
+                                                    <span>{{ $notification->data['title'] }}</span><br>
+                                                    <small>{{ $notification->data['content'] }}</small>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    </li>
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 											<img class="user_avatar" src="{{Auth::user()->avartar}}" alt="Avatar">
@@ -200,12 +195,10 @@
             var channel = pusher.subscribe('NotificationEvent');
             channel.bind('send-message', function(data) {
                 var newNotificationHtml = `
-        <a class="dropdown-item" href="#">
-            <span>${data.title}</span><br>
-            <small>${data.content}</small>
-        </a>
-        `;
-
+                <a class="dropdown-item" href="#">
+                    <span>${data.title}</span><br>
+                    <small>${data.content}</small>
+                </a>`;
                 $('.menu-notification').prepend(newNotificationHtml);
             });
         </script>

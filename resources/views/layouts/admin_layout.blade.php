@@ -29,8 +29,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- notification -->
     <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
-
-
+    @yield('head')
 </head>
 
 <body id="page-top">

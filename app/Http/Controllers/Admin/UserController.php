@@ -8,6 +8,7 @@ use App\User;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +26,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $title = 'Thêm người dùng mới';
         return view('admin.users_manager_create_edit', compact('title'));
     }

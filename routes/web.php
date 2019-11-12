@@ -53,8 +53,9 @@ Route::middleware('auth')->group(function () {
         //admin_setting
         Route::get('/settings', 'Admin\SystemController@index')->name('admin_setting');
         Route::post('/settings', 'Admin\SystemController@postSetting');
-
         Route::resource('/users', 'Admin\UserController');
+        //for notification
+        Route::get('getlistuser', 'UserController@getandfill');
         //for manager
         Route::prefix('vocabularymanager')->group(function() {
             Route::get('/', function() {
@@ -64,6 +65,7 @@ Route::middleware('auth')->group(function () {
             Route::post('edit/{id}', 'VocabularyController@edit');
             Route::post('delete/{id}', 'VocabularyController@delete');
         });
+
         Route::prefix('notificationmanager')->group(function() {
             Route::get('/',function (){
                 return view('admin/notification');

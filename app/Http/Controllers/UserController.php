@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,9 +27,18 @@ class UserController extends Controller
         return back()->withSuccess("You are already following {$user->name}");
     }
     //...
-    // Notifi trả về ít nhất 5 thông báo chưa đọc.
-    public function notifications()
+//    // Notifi trả về ít nhất 5 thông báo chưa đọc.
+//    public function notifications()
+//    {
+//        return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();
+//    }
+    public function getandfill(Request $request)
     {
-        return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();
+//        $start = $request->start;
+//        $limit = $request->length;
+        $user = array_values(User::orderBy("created_at", 'DESC')->toArray());
+//                ->offset($start)->limit($limit)->get()->toArray());
+        dd($user);
+        return response()->json(['data' => $user, 'recordsFiltered' => User::count(), 'recordsTotal' => User::count(), 'raws' => 1]);
     }
 }

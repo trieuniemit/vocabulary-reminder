@@ -9,13 +9,6 @@ use App\Vocabulary;
 
 class HomeController extends Controller
 {
-    
-    function getUserProfile() {
-        $user = Auth::user();
-        $title = 'Thông tin cá nhân';
-
-        return view('user.profile', compact('user', 'title'));
-    }
 
     function vocabularies(Request $request) {
         $vocas = null;
@@ -59,5 +52,40 @@ class HomeController extends Controller
         $voca = Vocabulary::where('word', $word)->first();
         $voca->load('means');
         return view('user.vocabulary_detail', compact('voca', 'title'));
+    }
+
+    function getUserProfile() {
+        $user = Auth::user();
+        $title = 'Thông tin cá nhân';
+
+        return view('user.profile', compact('user', 'title'));
+    }
+
+    function postUserProfile(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required',
+            'fullname' => 'required',
+            'email' => 'required',
+            'birthday' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+
+            return redirect(route('user_profile'))
+                ->withErrors($validator)
+                ->withInput();
+
+        } else {
+            $user = Auth::user();
+            $user->username = $request->username;
+            $user->fullname = $request->fullname;
+            $user->email = $request->email;
+            $user->gender = $request->gender;
+            $user->birthday = $request->birthday;
+            $user->save();
+        }
+
+        return redirect(route('user_profile'));
+
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
+use \Validator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -63,7 +64,6 @@ class HomeController extends Controller
 
     function postUserProfile(Request $request) {
         $validator = Validator::make($request->all(), [
-            'username' => 'required',
             'fullname' => 'required',
             'email' => 'required',
             'birthday' => 'required'
@@ -77,7 +77,6 @@ class HomeController extends Controller
 
         } else {
             $user = Auth::user();
-            $user->username = $request->username;
             $user->fullname = $request->fullname;
             $user->email = $request->email;
             $user->gender = $request->gender;

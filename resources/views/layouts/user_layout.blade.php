@@ -89,7 +89,7 @@
 		<div class="content-section" style="width: 100%;">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-2" style="padding: 35px 0;min-height: calc(100vh - 160px);background: #696868;">
+					<div class="col-md-2" style="padding: 0;min-height: calc(100vh - 160px);background: #1f253e;">
 						<div class="menu_features">
 							<a href="{{route('user_remind')}}">
 								<div class="alert big_icon" role="alert">
@@ -104,7 +104,7 @@
 								</div>
 							</a>
 							<a href="{{route('vocabulary-manager-fuser')}}">
-								<div class="alert alert-secondary big_icon" style="background-color: #007bff;" role="alert">
+								<div class="alert big_icon" role="alert">
 									<i class="fa fa-th-list" aria-hidden="true"></i>
 									<p>Quản lý từ vựng</p>
 								</div>

@@ -36,7 +36,10 @@ class AuthController extends Controller
     		$password = $request->input('password');
 
     		if( Auth::attempt(['email' => $email, 'password' =>$password])) {
-    			return redirect()->intended('/');
+				if(Auth::user()->role == 1) {
+				    return redirect(route('admin_home'));   
+				}
+    			return redirect()->intended('/user/remind');
     		} else {
     			$errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
     			return redirect()->back()->withInput()->withErrors($errors);

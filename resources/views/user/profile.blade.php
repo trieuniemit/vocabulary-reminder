@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form action="{{route('user_profile')}}" class="login_form" method="post">
+                <form action="{{route('user_profile_post')}}" class="login_form" method="post">
                     @csrf
 
                     @if($errors->has('errorlogin'))
@@ -19,7 +19,7 @@
                         @if($errors->has('username'))
 							<p style="color:red">{{$errors->first('username')}}</p>
 						@endif
-                        <input type="text" class="form-control" name="username" id="username" value="{{$user->username}}" placeholder="Tên đăng nhập">
+                        <input type="text" class="form-control" name="username" id="username" value="{{$user->username}}" placeholder="Tên đăng nhập" disabled="disabled">
                       </div>
                       <div class="form-group">
                         <label for="fullname">Họ và tên</label>
@@ -39,7 +39,7 @@
                         <label for="gender" class="control-label">Giới tính</label>
                         <select type="gender" name="gender" class="form-control wide" id="gender">
                             <option value="0">Nữ</option>
-                            <option value="0">Nam</option>
+                            <option value="1">Nam</option>
                         </select>
                       </div>
                       <div class="form-group">

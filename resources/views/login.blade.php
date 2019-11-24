@@ -37,14 +37,14 @@
                         </label>
                       </div>
                     <div class="login_social">
-                        <a href="#" class="btn-login-with facebook">
+                        <a href="/redirect/facebook" class="btn-login-with facebook">
                             <i class="fa fa-facebook-official"></i>
                             Đăng nhập với Facebook
                         </a>
-                        <a href="#" class="btn-login-with google">
-                            <i class="fa fa-facebook-official"></i>
+                        <!-- <a href="/redirect/google" class="btn-login-with google">
+                            <i class="fa fa-google"></i>
                             Đăng nhập với Google
-                        </a>
+                        </a> -->
                     </div>    
                     <div class="row">
                         <div class="col-sm-6">

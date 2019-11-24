@@ -19,6 +19,10 @@ Route::post('/login', 'AuthController@postLogin')->name('login_post');
 Route::get('/signup', 'AuthController@getSignup')->name('signup');
 Route::post('/signup', 'AuthController@postSignup')->name('signup_post');
 
+
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
 //must be login
 Route::middleware('auth')->group(function () {
 
@@ -38,6 +42,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dictionary', 'User\HomeController@vocabularies')->name('user_dictionary');
         Route::get('/dictionary/{word}', 'User\HomeController@vocabularyDetail')->name('user_vocabulary_detail');
         Route::get('/profile', 'User\HomeController@getUserProfile')->name('user_profile'); //edit profile
+        Route::post('/profile', 'User\HomeController@postUserProfile')->name('user_profile_post'); //edit profile
         Route::prefix('vocabularymanager')->group(function() {
             Route::get('/', function() {
                 return view('user/Vocabulary_Manager_fuser');

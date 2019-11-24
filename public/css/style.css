@@ -3483,3 +3483,7 @@ a:last-child .big_icon {
 .card-img{
   position: relative;
 }
+
+.active .big_icon {
+  background: #04091e;
+}

@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/settings', 'Admin\SystemController@postSetting');
         Route::resource('/users', 'Admin\UserController');
         //for notification
-        Route::get('getlistuser', 'UserController@getandfill');
+        Route::get('/getselect', 'Admin\UserController@getaselect');
         //for manager
         Route::prefix('vocabularymanager')->group(function() {
             Route::get('/', function() {
@@ -76,8 +76,8 @@ Route::middleware('auth')->group(function () {
         });
     });
     //Dũng
-//    Route::get('notification', 'SendNotificationController@create')->name('notification.create');
-//    Route::post('notification', 'SendNotificationController@store')->name('notification.store');
+    //    Route::get('notification', 'SendNotificationController@create')->name('notification.create');
+    //    Route::post('notification', 'SendNotificationController@store')->name('notification.store');
     //!
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });

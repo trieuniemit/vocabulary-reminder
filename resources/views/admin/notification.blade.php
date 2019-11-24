@@ -1,10 +1,5 @@
 @extends('layouts.admin_layout')
 
-@section('head')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
-@endsection
-
 @section('content')
     <!--================Home Banner Area =================-->
     <section class="banner_area">
@@ -37,6 +32,7 @@
                     <th>STT</th>
                     <th>Tiêu đề</th>
                     <th>Nội dung thông báo</th>
+                    <th>Người nhận</th>
                     <th>Thao tác</th>
                     </thead>
                     <tbody>
@@ -69,13 +65,13 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label>Đối tượng</label>
-                                <select name="userid" id="userid">
+                                <select name="userid" id="userid" style="width: 100%">
                                     <option value="0">-- Chọn --</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Tiêu đề</label>
-                                <input name="title" type="text" class="form-control">
+                                <input name="title" type="text" placeholder="Không để trống" class="form-control">
                             </div>
                         </div>
                         <div class="form-group ">

@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- notification -->
     <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
-    @yield('head')
+    <link href="/select/css/select2.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -149,7 +149,6 @@
 <script src="/admin_resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-
 <!-- Core plugin JavaScript-->
 <script src="/admin_resource/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -166,6 +165,7 @@
 <script src="/vendors/nice-select/js/jquery.nice-select.min.js"></script>
 <script type="text/javascript" src="/DataTables/js/dataTables.responsive.js"></script>
 
+<script src="/select/js/select2.js"></script>
 @yield('script')
 </body>
 

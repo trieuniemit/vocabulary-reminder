@@ -29,7 +29,9 @@ var table = $('#tblresult').DataTable({
             var index = 0;
             console.log(json.data);
             json.data.forEach(element => {
-                console.log(element["data"])
+                var obj = JSON.parse(element.data);
+                element.title = obj.title;
+                element.content = obj.content;
                 element.Method = `<a class=" my-method-button btnEdit fa-hover"    title="Sửa loại tài khoản" ><i class="fa fa-edit" style="color:blue"></i></a> &nbsp
                                 <a class=" my-method-button btnDelete fa-hover"    title="Xóa loại tài khoản" ><i class="fa fa-trash-o" style="color:red"></i></a>`;
                 index++;
@@ -41,7 +43,7 @@ var table = $('#tblresult').DataTable({
         {
             "className": "text-center",
             "width": "2%",
-            "targets": [0,2]
+            "targets": [0,4]
         },
         // {
         //     "className": "text-center",
@@ -53,8 +55,9 @@ var table = $('#tblresult').DataTable({
     ],
     columns: [
         { data: null },
-        { data: "id" },
-        { data: "data" },
+        { data: "title" },
+        { data: "content" },
+        {data:"notifiable_id"},
         { data: "Method" },
     ],
     bAutoWidth: false,
@@ -127,7 +130,6 @@ $('#frmPost').submit((e) => {
         data: form,
     })
         .done((data) => {
-            console.log(data)
             if (data.code === 1) {
                 $('#tblresult').DataTable().ajax.reload();
                 $("#appdetail").modal('hide');
@@ -171,7 +173,6 @@ $('#frmDelete').submit((e) => {
         dataType: 'json'
     })
         .done((data) => {
-            console.log(data.code);
             if (data.code === 1) {
                 $('#tblresult').DataTable().ajax.reload();
                 $("#appConfirm").modal('hide');
@@ -189,4 +190,17 @@ $('#frmDelete').submit((e) => {
         });
     $("#btnSubmitConfirm").removeAttr("disabled");
 });
+$('#userid').select2({
+    ajax: {
+        url: '/admin/getselect',
+        processResults: function (data) {
+            // Transforms the top-level key of the response object from 'items' to 'results'
+            console.log(data.data);
+            return {
+                results: data.data,
+            };
+        }
+    }
+});
+
 

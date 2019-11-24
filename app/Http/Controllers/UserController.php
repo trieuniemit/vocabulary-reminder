@@ -32,13 +32,5 @@ class UserController extends Controller
 //    {
 //        return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();
 //    }
-    public function getandfill(Request $request)
-    {
-//        $start = $request->start;
-//        $limit = $request->length;
-        $user = array_values(User::orderBy("created_at", 'DESC')->toArray());
-//                ->offset($start)->limit($limit)->get()->toArray());
-        dd($user);
-        return response()->json(['data' => $user, 'recordsFiltered' => User::count(), 'recordsTotal' => User::count(), 'raws' => 1]);
-    }
+
 }

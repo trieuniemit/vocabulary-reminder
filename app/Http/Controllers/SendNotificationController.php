@@ -42,13 +42,19 @@ class SendNotificationController extends Controller
             $notification = array_values(Notification::orderBy("created_at", 'DESC')
                 ->offset($start)->limit($limit)->get()->toArray());
         }
+        foreach ($notification as $index => $n)
+        {
+//            $n["nameof"]= User::;
+            $user =  User::find($n["notifiable_id"]);
+            $notification[$index]["notifiable_id"] = $user->fullname;
+        }
         return response()->json(['data' => $notification, 'recordsFiltered' => Notification::count(), 'recordsTotal' => Notification::count(), 'raws' => 1]);
     }
     public function edit(Request $request)
     {
         $result = new JsonResponse();
         try {
-            $user = User::find(2); // id của user đã đăng kí ở trên, user này sẻ nhận được thông báo
+            $user = User::find($request->userid); // id của user đã đăng kí ở trên, user này sẻ nhận được thông báo
             $data = $request->only([
                 'title',
                 'content',

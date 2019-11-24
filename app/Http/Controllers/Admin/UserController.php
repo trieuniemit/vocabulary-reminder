@@ -89,4 +89,14 @@ class UserController extends Controller
     {
         //
     }
+
+    public function getaselect(Request $request)
+    {
+        $user = User::orderBy("created_at", 'DESC')->get();
+        $array = array();
+        foreach($user as $index => $n) {
+            $array[] = array('id' => $n->id, 'text' => $n->fullname);
+        }
+        return response()->json(['data' => $array]);
+    }
 }
